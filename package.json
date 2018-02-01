@@ -1,0 +1,22 @@
+{
+  "name": "enzyme-adapter-plusnew",
+  "version": "0.1.0",
+  "description": "adapter for enzyme testsuite to the plusnew framework",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plusnew/enzyme-adapter-plusnew.git"
+  },
+  "author": "Carlo Jeske",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plusnew/enzyme-adapter-plusnew/issues"
+  },
+  "homepage": "https://github.com/plusnew/enzyme-adapter-plusnew#readme",
+  "devDependencies": {
+    "plusnew": "0.5.39"
+  }
+}
