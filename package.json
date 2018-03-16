@@ -2,10 +2,12 @@
   "name": "enzyme-adapter-plusnew",
   "version": "0.1.1",
   "description": "adapter for enzyme testsuite to the plusnew framework",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc --pretty"
+    "build": "webpack --config configs/webpack.base.conf.js",
+    "test": "webpack --config configs/webpack.test.conf.js && karma start configs/karma.conf.js --no-auto-watch --single-run",
+    "test:watch": "karma start configs/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,18 @@
   },
   "homepage": "https://github.com/plusnew/enzyme-adapter-plusnew#readme",
   "devDependencies": {
-    "plusnew": "0.5.53",
-    "typescript": "2.7.2"
+    "@types/jasmine": "^2.8.6",
+    "awesome-typescript-loader": "^4.0.1",
+    "enzyme": "^3.3.0",
+    "jasmine-core": "^2.99.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-typescript": "^3.0.12",
+    "plusnew": "0.5.60",
+    "typescript": "2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
   }
 }
