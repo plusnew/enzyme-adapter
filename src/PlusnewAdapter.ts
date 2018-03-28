@@ -54,7 +54,6 @@ class PlusnewAdapter extends EnzymeAdapter {
         rootInstance = plusnew.render(element, container);
       },
       getNode(): InstanceWrapper {
-        // plusnew.
         return createEnzymeNode(rootInstance);
       },
     };
@@ -63,4 +62,3 @@ class PlusnewAdapter extends EnzymeAdapter {
 
 export { InstanceWrapper };
 export default PlusnewAdapter;
-
