@@ -4,7 +4,7 @@
   "description": "adapter for enzyme testsuite to the plusnew framework",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublishOnly": "yarn run test && yarn run build",
     "build": "webpack --config configs/webpack.prod.conf.js",
     "test": "webpack --config configs/webpack.test.conf.js && karma start configs/karma.conf.js --no-auto-watch --single-run",
     "test:watch": "concurrently  \"webpack --config configs/webpack.test.conf.js --watch\" \"karma start configs/karma.conf.js\""
