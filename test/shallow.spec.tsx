@@ -10,7 +10,7 @@ describe('test App.tsx', () => {
       () => ({}),
       () => <button />,
     )
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App /> as any);
     expect(wrapper.find(<button />).length).toBe(1);
     expect(wrapper.find(<input />).length).toBe(0);
 

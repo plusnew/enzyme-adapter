@@ -1,4 +1,4 @@
-import plusnew from './src';
+import enzymeAdapterPlusnew from './src';
 
-export default plusnew;
+export default enzymeAdapterPlusnew;
 export * from './src';
