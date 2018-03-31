@@ -23,7 +23,7 @@
     "@types/enzyme": "3.1.9",
     "awesome-typescript-loader": "4.0.1",
     "enzyme": "3.3.0",
-    "plusnew": "0.5.77",
+    "plusnew": "0.5.81",
     "plusnew-karma-config": "0.5.69",
     "plusnew-webpack-config": "0.5.79",
     "typescript": "2.8.1"

@@ -36,11 +36,14 @@ class PlusnewAdapter extends EnzymeAdapter {
     super();
   }
 
-  createRenderer(mode: 'shallow') {
+  createRenderer(options: {mode: 'shallow'}) {
     const container = document.createElement('div');
     let rootInstance: Instance;
     return {
       render(element: plusnew.JSX.Element) {
+        if (options.mode === 'shallow') {
+          element.createChildrenComponents = false;
+        }
         rootInstance = plusnew.render(element, container);
       },
       getNode(): InstanceWrapper {
