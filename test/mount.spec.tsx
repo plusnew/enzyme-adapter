@@ -4,8 +4,7 @@ import plusnew, { component } from 'plusnew';
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-
-describe('test fullrender', () => {
+xdescribe('test fullrender', () => {
   it('button should be findable', () => {
     const Component = component(
       () => ({}),
