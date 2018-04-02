@@ -20,6 +20,15 @@ class PlusnewAdapter extends EnzymeAdapter {
       },
     };
   }
+
+  isValidElement() {
+    return true;
+  }
+
+  elementToNode(){
+    debugger;
+    return;
+  }
 }
 
 export default PlusnewAdapter;
