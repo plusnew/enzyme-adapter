@@ -1,5 +1,6 @@
-import plusnew, { Instance } from 'plusnew';
+import plusnew, { Instance, componentResult, PlusnewAbstractElement } from 'plusnew';
 import { EnzymeAdapter } from 'enzyme';
+import elementToTree from './elementToTree';
 
 class PlusnewAdapter extends EnzymeAdapter {
   constructor() {
@@ -11,6 +12,7 @@ class PlusnewAdapter extends EnzymeAdapter {
     let rootInstance: Instance;
     return {
       render(element: plusnew.JSX.Element) {
+        debugger;
         rootInstance = plusnew.render(element, container, {
           createChildrenComponents: options.mode === 'mount',
         });
@@ -25,10 +27,11 @@ class PlusnewAdapter extends EnzymeAdapter {
     return true;
   }
 
-  elementToNode(){
-    debugger;
-    return;
+  elementToNode(element: PlusnewAbstractElement) {
+    return elementToTree(element);
   }
 }
 
 export default PlusnewAdapter;
+
+export { componentResult, PlusnewAbstractElement }

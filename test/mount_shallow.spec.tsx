@@ -2,15 +2,15 @@ import enzymeAdapterPlusnew, { mount, shallow } from 'index';
 import { configure } from 'enzyme';
 import plusnew, { component, store } from 'plusnew';
 
-function getMountFunction(callback: (mountWrapper: typeof mount) => void) {
-  callback(mount);
+function getMountFunction(callback: (mountWrapper: typeof shallow) => void) {
+  callback(mount as any);
   callback(shallow as any);
 }
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-describe('test both renderers', () => {
-  xit('button should be findable', () => {
+xdescribe('test both renderers', () => {
+  it('button should be containsable', () => {
     getMountFunction((mount) => {
       const Component = component(
         () => ({}),
@@ -18,12 +18,12 @@ describe('test both renderers', () => {
       );
   
       const wrapper = mount(<Component />);
-      expect(wrapper.find(<button />).length).toBe(1);
-      expect(wrapper.find(<input />).length).toBe(0);
+      expect(wrapper.contains(<button />)).toBe(true);
+      expect(wrapper.contains(<input />)).toBe(false);
     });
   });
 
-  it('button should be findable with class', () => {
+  it('button should be containsable with class', () => {
     getMountFunction((mount) => {
       const Component = component(
         () => ({}),
@@ -32,22 +32,17 @@ describe('test both renderers', () => {
   
       const wrapper = mount(<Component />);
 
-      debugger;
-      // expect(wrapper.find(<button />).length).toBe(1);
+      expect(wrapper.contains(<button />)).toBe(true);
 
+      expect(wrapper.contains(<button className="foo" />)).toBe(true);
+      expect(wrapper.contains(<button className="bar" />)).toBe(false);
 
-      debugger;
-      expect(wrapper.find(<button className="foo" />).length).toBe(1);
-      expect(wrapper.find(<button className="bar" />).length).toBe(0);
-
-      debugger;
-      expect(wrapper.find(<button />).hasClass('foo')).toBe(true);
-      expect(wrapper.find(<button />).hasClass('bar')).toBe(false);
-
+      expect(wrapper.find('.button').hasClass('foo')).toBe(true);
+      expect(wrapper.find('.button').hasClass('bar')).toBe(false);
     });
   });
 
-  xit('listitems should be findable and updatable', () => {
+  it('listitems should be containsable and updatable', () => {
     getMountFunction((mount) => {
       const local = store([{
         key: 0,
@@ -68,12 +63,12 @@ describe('test both renderers', () => {
       );
   
       const wrapper = mount(<Component />);
-      expect(wrapper.find(<ul />).length).toBe(1);
-      expect(wrapper.find(<li />).length).toBe(2);
+      expect(wrapper.contains(<ul />)).toBe(true);
+      expect(wrapper.find('ul').children().length).toBe(local.state.length);
+      expect(wrapper.contains(<li />)).toBe(false);
 
       local.dispatch({key: 2, value: 'third'})
 
-      expect(wrapper.find(<li />).length).toBe(3);
     });
 
   });

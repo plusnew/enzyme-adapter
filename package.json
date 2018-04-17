@@ -7,7 +7,7 @@
     "prepublishOnly": "yarn run test && yarn run build",
     "build": "webpack --config configs/webpack.prod.conf.js",
     "test": "webpack --config configs/webpack.test.conf.js && karma start configs/karma.conf.js --no-auto-watch --single-run",
-    "test:watch": "concurrently  \"webpack --config configs/webpack.test.conf.js --watch\" \"touch dist/index.test.js\" \"karma start configs/karma.conf.js\""
+    "test:watch": "concurrently  \"webpack --config configs/webpack.test.conf.js --watch\" \"karma start configs/karma.conf.js\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
     "plusnew": "0.5.81",
     "plusnew-karma-config": "0.5.69",
     "plusnew-webpack-config": "0.5.79",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
     "typescript": "2.8.1"
   },
   "dependencies": {}
