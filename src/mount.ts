@@ -1,9 +1,11 @@
 import { mount, ReactWrapper, MountRendererProps } from 'enzyme';
 import plusnew from 'plusnew';
+import PlusnewMountWrapper from './wrapper/PlusnewMountWrapper';
 
-export interface plusnewMount {
-  <P, S>(node: plusnew.JSX.Element, options?: MountRendererProps): ReactWrapper<P, S>
-}
-const plusnewMount = (mount as any) as plusnewMount;
+const plusnewMount = function (node: plusnew.JSX.Element, options?: MountRendererProps) {
+  const wrapper = mount(node as any, options);
+
+  return new PlusnewMountWrapper(wrapper);
+};
 
 export default plusnewMount;

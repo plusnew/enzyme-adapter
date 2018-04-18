@@ -9,7 +9,7 @@ function getMountFunction(callback: (mountWrapper: typeof shallow) => void) {
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-xdescribe('test both renderers', () => {
+describe('test both renderers', () => {
   it('button should be containsable', () => {
     getMountFunction((mount) => {
       const Component = component(
@@ -27,18 +27,18 @@ xdescribe('test both renderers', () => {
     getMountFunction((mount) => {
       const Component = component(
         () => ({}),
-        () => <button className="foo"/>,
+        () => <button className="foo" />,
       );
   
       const wrapper = mount(<Component />);
 
-      expect(wrapper.contains(<button />)).toBe(true);
+      expect(wrapper.contains(<button />)).toBe(false);
 
       expect(wrapper.contains(<button className="foo" />)).toBe(true);
       expect(wrapper.contains(<button className="bar" />)).toBe(false);
 
-      expect(wrapper.find('.button').hasClass('foo')).toBe(true);
-      expect(wrapper.find('.button').hasClass('bar')).toBe(false);
+      expect(wrapper.find('button').hasClass('foo')).toBe(true);
+      expect(wrapper.find('button').hasClass('bar')).toBe(false);
     });
   });
 
@@ -46,10 +46,10 @@ xdescribe('test both renderers', () => {
     getMountFunction((mount) => {
       const local = store([{
         key: 0,
-        value: 'first'
+        value: 'first',
       }, {
         key: 1,
-        value: 'second'
+        value: 'second',
       }], (state, action: {key: number, value: string}) => [...state, action]);
 
       const Component = component(
@@ -57,21 +57,18 @@ xdescribe('test both renderers', () => {
         () =>
           <ul>
             {local.state.map(entity => 
-              <li key={entity.key}>{entity.value}</li>
+              <li key={entity.key}>{entity.value}</li>,
             )}
-          </ul>
+          </ul>,
       );
   
       const wrapper = mount(<Component />);
-      expect(wrapper.contains(<ul />)).toBe(true);
       expect(wrapper.find('ul').children().length).toBe(local.state.length);
-      expect(wrapper.contains(<li />)).toBe(false);
+      expect(wrapper.contains(<li key={0}>first</li>)).toBe(true);
+      expect(wrapper.contains(<li key={1}>second</li>)).toBe(true);
 
-      local.dispatch({key: 2, value: 'third'})
 
+      local.dispatch({ key: 2, value: 'third' });
     });
-
   });
-
-  
 });

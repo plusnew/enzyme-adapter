@@ -2,22 +2,21 @@ import { ShallowRendererProps, CommonWrapper, EnzymeSelector, Intercepter } from
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
 
 abstract class PlusnewCommonWrapper {
-  abstract wrapper: CommonWrapper
-
+  abstract wrapper: CommonWrapper;
 
   filterWhere(predicate: (wrapper: this) => boolean) {
     this.wrapper.filterWhere(this.wrapper as any);
-  };
+  }
 
   contains(node: plusnew.JSX.Element | plusnew.JSX.Element[] | string) {
     return this.wrapper.contains(node as any);
   }
 
-  containsMatchingElement(node: plusnew.JSX.Element | plusnew.JSX.Element[]){
+  containsMatchingElement(node: plusnew.JSX.Element | plusnew.JSX.Element[]) {
     return this.wrapper.containsMatchingElement(node as any);
   }
 
-  containsAllMatchingElements(nodes: plusnew.JSX.Element[] | plusnew.JSX.Element[][] ){
+  containsAllMatchingElements(nodes: plusnew.JSX.Element[] | plusnew.JSX.Element[][]) {
     return this.wrapper.containsAllMatchingElements(nodes as any);
   }
 
@@ -44,7 +43,7 @@ abstract class PlusnewCommonWrapper {
 
   exists() {
     return this.wrapper.exists();
-  };
+  }
 
   not(selector: Component | string) {
     return this.wrapper.not(selector);
@@ -52,11 +51,11 @@ abstract class PlusnewCommonWrapper {
 
   text() {
     return this.wrapper.text();
-  };
+  }
 
   html() {
     return this.wrapper.html();
-  };
+  }
 
   get(index: number): plusnew.JSX.Element {
     return this.wrapper.get(index) as any;
@@ -82,7 +81,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.getDOMNode();
   }
 
-  at(index: number): this{
+  at(index: number): this {
     return this.wrapper.at(index) as any;
   }
 
@@ -113,7 +112,6 @@ abstract class PlusnewCommonWrapper {
   context() {
     throw new Error('Context does not exist');
   }
-
 
   props() {
     return this.wrapper.props();

@@ -1,12 +1,13 @@
-import { ShallowWrapper, ShallowRendererProps } from 'enzyme';
+import { ReactWrapper } from 'enzyme';
 import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
 
-class PlusnewShallowWrapper extends PlusnewCommonWrapper {
-  wrapper: ShallowWrapper;
-  constructor(wrapper: ShallowWrapper) {
+export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
+  wrapper: ReactWrapper;
+  constructor(wrapper: ReactWrapper) {
     super();
     this.wrapper = wrapper;
   }
+
 
   public find(component: Component | string) {
     return this.wrapper.find(component as any);
@@ -17,7 +18,7 @@ class PlusnewShallowWrapper extends PlusnewCommonWrapper {
   }
 
 
-  public findWhere(predicate: (wrapper: ShallowWrapper<any, any>) => boolean) {
+  public findWhere(predicate: (wrapper: ReactWrapper<any, any>) => boolean) {
     return this.wrapper.findWhere(predicate);
   }
 
@@ -30,9 +31,9 @@ class PlusnewShallowWrapper extends PlusnewCommonWrapper {
   }
 
 
-  public dive<P2, S2>(options?: ShallowRendererProps) {
-    return this.wrapper.dive(options);
-  }
+  // public dive<P2, S2>(options?: ShallowRendererProps) {
+  //   return this.wrapper.dive(options);
+  // }
 
   public hostNodes() {
     throw new Error('Host nodes dont work right now');
@@ -51,5 +52,3 @@ class PlusnewShallowWrapper extends PlusnewCommonWrapper {
     return this.wrapper.parent();
   }
 }
-
-export default PlusnewShallowWrapper;

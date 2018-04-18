@@ -1,21 +1,21 @@
 import enzymeAdapterPlusnew, { shallow } from 'index';
-import { configure} from 'enzyme';
+import { configure } from 'enzyme';
 import plusnew, { component } from 'plusnew';
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-describe('test shallow', () => {
+xdescribe('test shallow', () => {
   it('button should be findable', () => {
     const Component = component(
       () => ({}),
       () => <button />,
     );
 
-    // const wrapper = shallow(<Component />);
-    // expect(wrapper.contains(<button />)).toBe(true);
-    // expect(wrapper.contains(<input />)).toBe(false);
-    // expect(wrapper.find('button').length).toBe(1);
-    // expect(wrapper.find('input').length).toBe(0);
+    const wrapper = shallow(<Component />);
+    expect(wrapper.contains(<button />)).toBe(true);
+    expect(wrapper.contains(<input />)).toBe(false);
+    expect(wrapper.find('button').length).toBe(1);
+    expect(wrapper.find('input').length).toBe(0);
   });
 
   it('button should not be findable in nested component', () => {
@@ -30,12 +30,11 @@ describe('test shallow', () => {
     );
 
     const wrapper = shallow(<Component />);
-    // expect(wrapper.find(Component).length).toBe(1);
-    debugger;
+    expect(wrapper.find(Component).length).toBe(1);
     expect(wrapper.contains(<NestedComponent />)).toBe(true);
-    // expect(wrapper.contains(<button />)).toBe(false);
-    // expect(wrapper.find(NestedComponent).length).toBe(1);
-    // expect(wrapper.find('button').length).toBe(0);
+    expect(wrapper.contains(<button />)).toBe(false);
+    expect(wrapper.find(NestedComponent).length).toBe(1);
+    expect(wrapper.find('button').length).toBe(0);
   });
 });
 
