@@ -42,7 +42,7 @@ describe('test both renderers', () => {
     });
   });
 
-  xit('listitems should be containsable and updatable', () => {
+  it('listitems should be containsable and updatable', () => {
     getMountFunction((mount) => {
       const local = store([{
         key: 0,
@@ -63,10 +63,9 @@ describe('test both renderers', () => {
       );
   
       const wrapper = mount(<Component />);
-      expect(wrapper.find('ul').children().length).toBe(local.state.length);
+      expect(wrapper.find('ul').find('li').length).toBe(local.state.length);
       expect(wrapper.contains(<li key={0}>first</li>)).toBe(true);
       expect(wrapper.contains(<li key={1}>second</li>)).toBe(true);
-
 
       local.dispatch({ key: 2, value: 'third' });
     });
