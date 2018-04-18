@@ -42,7 +42,7 @@ describe('test both renderers', () => {
     });
   });
 
-  it('listitems should be containsable and updatable', () => {
+  xit('listitems should be containsable and updatable', () => {
     getMountFunction((mount) => {
       const local = store([{
         key: 0,

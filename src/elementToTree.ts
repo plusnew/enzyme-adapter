@@ -8,6 +8,7 @@ export default function elementToTree(element: ApplicationElement): any {
       nodeType: 'function',
       type: currentElement.type,
       rendered: currentElement.props.children.map(elementToTree),
+      props: currentElement.props,
     };
   }
 
@@ -18,6 +19,7 @@ export default function elementToTree(element: ApplicationElement): any {
       nodeType: 'host',
       type: currentElement.type,
       rendered: currentElement.props.children.map(elementToTree),
+      props: currentElement.props,
     };
   }
 
