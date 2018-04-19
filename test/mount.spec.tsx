@@ -4,7 +4,6 @@ import plusnew, { component } from 'plusnew';
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-
 describe('test fullrender', () => {
   it('button should be findable', () => {
     const Component = component(
@@ -13,8 +12,8 @@ describe('test fullrender', () => {
     );
 
     const wrapper = mount(<Component />);
-    expect(wrapper.find(<button />).length).toBe(1);
-    expect(wrapper.find(<input />).length).toBe(0);
+    expect(wrapper.contains(<button />)).toBe(true);
+    expect(wrapper.contains(<input />)).toBe(false);
   });
 
   it('button should not be findable in nested component', () => {
@@ -29,6 +28,6 @@ describe('test fullrender', () => {
     );
 
     const wrapper = mount(<Component />);
-    expect(wrapper.find(<button />).length).toBe(1);
+    expect(wrapper.contains(<button />)).toBe(true);
   });
 });

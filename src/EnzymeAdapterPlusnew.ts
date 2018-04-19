@@ -1,57 +1,36 @@
-import plusnew, { Instance } from 'plusnew';
+import plusnew, { Instance, componentResult, PlusnewAbstractElement } from 'plusnew';
 import { EnzymeAdapter } from 'enzyme';
-
-type InstanceWrapper = {
-  _plusnewInstance: Instance,
-  nodeType: 'host',
-  rendered: InstanceWrapper[];
-  props: {} | null;
-};
-
-function createEnzymeNode(instance: Instance): InstanceWrapper {
-  let children: Instance[] = [];
-  let props: {} | null = null;
-  if ('children' in instance) {
-    if (Array.isArray((instance as any).children)) {
-      children = (instance as any).children;
-    } else {
-      children = [(instance as any).children];
-    }
-  }
-
-  if (instance.abstractElement && (instance.abstractElement as any).props) {
-    props = instance.abstractElement;
-  }
-
-  return {
-    props,
-    _plusnewInstance: instance,
-    nodeType: 'host',
-    rendered: children.map(createEnzymeNode),
-  };
-}
+import elementToTree from './elementToTree';
 
 class PlusnewAdapter extends EnzymeAdapter {
   constructor() {
     super();
   }
 
-  createRenderer(options: {mode: 'shallow'}) {
+  createRenderer(options: {mode: 'shallow' | 'mount'}) {
     const container = document.createElement('div');
     let rootInstance: Instance;
     return {
       render(element: plusnew.JSX.Element) {
-        if (options.mode === 'shallow') {
-          element.createChildrenComponents = false;
-        }
-        rootInstance = plusnew.render(element, container);
+        rootInstance = plusnew.render(element, container, {
+          createChildrenComponents: options.mode === 'mount',
+        });
       },
-      getNode(): InstanceWrapper {
-        return createEnzymeNode(rootInstance);
+      getNode() {
+        return rootInstance;
       },
     };
   }
+
+  isValidElement() {
+    return true;
+  }
+
+  elementToNode(element: PlusnewAbstractElement) {
+    return elementToTree(element);
+  }
 }
 
-export { InstanceWrapper };
 export default PlusnewAdapter;
+
+export { componentResult, PlusnewAbstractElement };
