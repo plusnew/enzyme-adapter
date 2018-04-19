@@ -1520,7 +1520,7 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concurrently@^3.5.1:
+concurrently@3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-3.5.1.tgz#ee8b60018bbe86b02df13e5249453c6ececd2521"
   dependencies:
@@ -4624,9 +4624,9 @@ plusnew-webpack-config@0.5.93:
     webpack "4.5.0"
     webpack-cli "2.0.14"
 
-plusnew@0.5.81:
-  version "0.5.81"
-  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.81.tgz#05145cfe91d87cff5de34dc0b24eb4036a964602"
+plusnew@0.5.94:
+  version "0.5.94"
+  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.94.tgz#d4640555ad58735555b3449548f7fbed6d16e387"
   dependencies:
     redchain "0.5.73"
 
@@ -5807,7 +5807,7 @@ tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
-tslint-config-airbnb@^5.8.0:
+tslint-config-airbnb@5.8.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.8.0.tgz#0398cf4b5a8715b604cb40e9580532c5c0e68716"
   dependencies:
@@ -5837,7 +5837,7 @@ tslint-microsoft-contrib@~5.0.1:
   dependencies:
     tsutils "^2.12.1"
 
-tslint@^5.9.1:
+tslint@5.9.1:
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.9.1.tgz#1255f87a3ff57eb0b0e1f0e610a8b4748046c9ae"
   dependencies:
