@@ -9,7 +9,7 @@ interface common {
 
 function getMountFunction(callback: (mountWrapper: common) => void) {
   callback(mount as any);
-  // callback(shallow as any);
+  callback(shallow as any);
 }
 
 configure({ adapter: new enzymeAdapterPlusnew() });
