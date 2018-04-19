@@ -8,47 +8,16 @@ class PlusnewShallowWrapper extends PlusnewCommonWrapper {
     this.wrapper = wrapper;
   }
 
-  public find(component: Component | string) {
-    return this.wrapper.find(component as any);
+  public dive() {
+    return this.wrapper.dive.apply(this.wrapper, arguments);
   }
 
-  public filter(component: Component | string) {
-    return this.wrapper.filter(component as any);
+  public equals(node: plusnew.JSX.Element) {
+    return this.wrapper.equals.apply(this.wrapper, arguments);
   }
 
-
-  public findWhere(predicate: (wrapper: ShallowWrapper<any, any>) => boolean) {
-    return this.wrapper.findWhere(predicate);
-  }
-
-  public children(component: Component | string) {
-    return this.wrapper.children(component as any);
-  }
-
-  public childAt(index: number) {
-    return this.wrapper.childAt(index);
-  }
-
-
-  public dive<P2, S2>(options?: ShallowRendererProps) {
-    return this.wrapper.dive(options);
-  }
-
-  public hostNodes() {
-    throw new Error('Host nodes dont work right now');
-    // return this.wrapper.hostNodes();
-  }
-
-  public parents(component: Component | string) {
-    return this.wrapper.parents(component as any);
-  }
-
-  public closest(component: Component | string) {
-    return this.wrapper.closest(component as any);
-  }
-
-  public parent() {
-    return this.wrapper.parent();
+  public shallow(options?: ShallowRendererProps) {
+    return this.wrapper.shallow.apply(this.wrapper, arguments);
   }
 }
 

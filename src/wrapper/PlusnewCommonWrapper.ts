@@ -1,249 +1,219 @@
 import { ShallowRendererProps, CommonWrapper, EnzymeSelector, Intercepter } from 'enzyme';
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
+import { componentResult, Instance } from 'plusnew';
+
+type selector = string | componentResult<any>;
+type predicate = (instance: Instance) => boolean;
 
 abstract class PlusnewCommonWrapper {
-  abstract wrapper: CommonWrapper;
+  abstract wrapper: any;
 
-  filterWhere(predicate: (wrapper: this) => boolean) {
-    this.wrapper.filterWhere(this.wrapper as any);
+  public at(index: number) {
+    return this.wrapper.at.apply(this.wrapper, arguments);
   }
 
-  contains(node: plusnew.JSX.Element | plusnew.JSX.Element[] | string) {
-    return this.wrapper.contains(node as any);
+  public childAt() {
+    return this.wrapper.childAt.apply(this.wrapper, arguments);
   }
 
-  containsMatchingElement(node: plusnew.JSX.Element | plusnew.JSX.Element[]) {
-    return this.wrapper.containsMatchingElement(node as any);
+  public children() {
+    return this.wrapper.children.apply(this.wrapper, arguments);
   }
 
-  containsAllMatchingElements(nodes: plusnew.JSX.Element[] | plusnew.JSX.Element[][]) {
-    return this.wrapper.containsAllMatchingElements(nodes as any);
+  public closest(selector: selector) {
+    return this.wrapper.closest.apply(this.wrapper, arguments);
   }
 
-  containsAnyMatchingElements(nodes: plusnew.JSX.Element[] | plusnew.JSX.Element[][]) {
-    return this.wrapper.containsAnyMatchingElements(nodes as any);
+  public contains(nodeOrNodes: plusnew.JSX.Element | plusnew.JSX.Element[]) {
+    return this.wrapper.contains.apply(this.wrapper, arguments);
   }
 
-  equals(node: plusnew.JSX.Element) {
-    return this.wrapper.equals(node as any);
+  public containsAllMatchingElements(nodes: plusnew.JSX.Element[]) {
+    return this.wrapper.containsAllMatchingElements.apply(this.wrapper, arguments);
   }
 
-  matchesElement(node: plusnew.JSX.Element) {
-    return this.wrapper.matchesElement(node as any);
+  public containsAnyMatchingElements(nodes: plusnew.JSX.Element[]) {
+    return this.wrapper.containsAnyMatchingElements.apply(this.wrapper, arguments);
   }
 
-
-  hasClass(className: string) {
-    return this.wrapper.hasClass(className);
+  public containsMatchingElement(node: plusnew.JSX.Element) {
+    return this.wrapper.containsMatchingElement.apply(this.wrapper, arguments);
   }
 
-  is(selector: Component | string) {
-    return this.wrapper.is(selector as any);
+  public context(key: any) {
+    throw new Error('Plusnew does not have contexts');
+    // return this.wrapper.context.apply(this.wrapper, arguments);
   }
 
-  exists() {
-    return this.wrapper.exists();
+  public debug() {
+    return this.wrapper.debug.apply(this.wrapper, arguments);
   }
 
-  not(selector: Component | string) {
-    return this.wrapper.not(selector);
+  public every(selector: selector) {
+    return this.wrapper.every.apply(this.wrapper, arguments);
   }
 
-  text() {
-    return this.wrapper.text();
+  public everyWhere(predicate: predicate) {
+    return this.wrapper.everyWhere.apply(this.wrapper, arguments);
   }
 
-  html() {
-    return this.wrapper.html();
+  public exists() {
+    return this.wrapper.exists.apply(this.wrapper, arguments);
   }
 
-  get(index: number): plusnew.JSX.Element {
-    return this.wrapper.get(index) as any;
+  public filter(selector: selector) {
+    return this.wrapper.filter.apply(this.wrapper, arguments);
   }
 
-  getNode(): plusnew.JSX.Element {
-    return this.wrapper.getNode() as any;
+  public filterWhere(predicate: predicate) {
+    return this.wrapper.filterWhere.apply(this.wrapper, arguments);
   }
 
-  getNodes(): plusnew.JSX.Element[] {
-    return this.wrapper.getNodes() as any;
+  public find(selector: selector) {
+    return this.wrapper.find.apply(this.wrapper, arguments);
   }
 
-  getElement(): plusnew.JSX.Element {
-    return this.wrapper.getElement() as any;
+  public findWhere(predicate: predicate) {
+    return this.wrapper.findWhere.apply(this.wrapper, arguments);
   }
 
-  getElements(): plusnew.JSX.Element[] {
-    return this.wrapper.getElement() as any;
+  public first() {
+    return this.wrapper.first.apply(this.wrapper, arguments);
   }
 
-  getDOMNode(): Element {
-    return this.wrapper.getDOMNode();
+  public forEach(fn: any) {
+    return this.wrapper.forEach.apply(this.wrapper, arguments);
   }
 
-  at(index: number): this {
-    return this.wrapper.at(index) as any;
+  public get(index: number) {
+    return this.wrapper.get.apply(this.wrapper, arguments);
   }
 
-  first(): this {
-    return this.wrapper.first() as any;
+  public hasClass(className: string) {
+    return this.wrapper.hasClass.apply(this.wrapper, arguments);
   }
 
-  last(): this {
-    return this.wrapper.last() as any;
-
+  public html() {
+    return this.wrapper.html.apply(this.wrapper, arguments);
   }
 
-  slice(begin?: number, end?: number): this {
-    return this.wrapper.slice(begin, end) as any;
+  public instance() {
+    return this.wrapper.instance.apply(this.wrapper, arguments);
   }
 
-  tap(intercepter: Intercepter<this>): this {
-    return this.wrapper.tap(intercepter as any) as any;
+  public is(selector: selector) {
+    return this.wrapper.is.apply(this.wrapper, arguments);
   }
 
-  state(key?: string) {
-    if (arguments.length) {
-      return this.wrapper.state();
-    }
-    return this.wrapper.state(key as any);
+  public isEmpty() {
+    return this.wrapper.isEmpty.apply(this.wrapper, arguments);
   }
 
-  context() {
-    throw new Error('Context does not exist');
+  public key() {
+    return this.wrapper.key.apply(this.wrapper, arguments);
   }
 
-  props() {
-    return this.wrapper.props();
+  public last() {
+    return this.wrapper.last.apply(this.wrapper, arguments);
   }
 
-  prop(key: string) {
-    return this.wrapper.prop(key);
+  public map(fn: any) {
+    return this.wrapper.map.apply(this.wrapper, arguments);
   }
 
-  key(): string {
-    return this.wrapper.key();
+  public matchesElement(node: plusnew.JSX.Element) {
+    return this.wrapper.matchesElement.apply(this.wrapper, arguments);
   }
 
-  simulate(event: string, ...args: any[]): this {
-    return this.wrapper.simulate(event, ...args) as any;
+  public name() {
+    return this.wrapper.name.apply(this.wrapper, arguments);
   }
 
-
-  setState(state: string, callback?: () => void) {
-    return this.wrapper.setState(state, callback);
+  public not(selector: selector) {
+    return this.wrapper.not.apply(this.wrapper, arguments);
   }
 
+  public parent() {
+    return this.wrapper.parent.apply(this.wrapper, arguments);
+  }
 
-  // setProps<K extends keyof P>(props: Pick<P, K>): this {
+  public parents() {
+    return this.wrapper.parents.apply(this.wrapper, arguments);
+  }
 
-  // }
+  public prop(key: string) {
+    return this.wrapper.prop.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * A method that sets the context of the root component, and re-renders. Useful for when you are wanting to
-  //  * test how the component behaves over time with changing contexts.
-  //  * Returns itself.
-  //  *
-  //  * NOTE: can only be called on a wrapper instance that is also the root instance.
-  //  */
-  // setContext(context: any): this;
+  public props() {
+    return this.wrapper.props.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Gets the instance of the component being rendered as the root node passed into shallow().
-  //  *
-  //  * NOTE: can only be called on a wrapper instance that is also the root instance.
-  //  */
-  // instance(): Component<P, S>;
+  public reduce(fn: any, initialValue?: any) {
+    return this.wrapper.reduce.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Forces a re-render. Useful to run before checking the render output if something external may be updating
-  //  * the state of the component somewhere.
-  //  * Returns itself.
-  //  *
-  //  * NOTE: can only be called on a wrapper instance that is also the root instance.
-  //  */
-  // update(): this;
+  public reduceRight(fn: any, initialValue?: any) {
+    return this.wrapper.reduceRight.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns an html-like string of the wrapper for debugging purposes. Useful to print out to the console when
-  //  * tests are not passing when you expect them to.
-  //  */
-  // debug(): string;
+  public render() {
+    return this.wrapper.render.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns the name of the current node of the wrapper.
-  //  */
-  // name(): string;
+  public setContext(context: any) {
+    throw new Error('Plusnew does not have contexts');
+    // return this.wrapper.setContext.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Iterates through each node of the current wrapper and executes the provided function with a wrapper around
-  //  * the corresponding node passed in as the first argument.
-  //  *
-  //  * Returns itself.
-  //  * @param fn A callback to be run for every node in the collection. Should expect a ShallowWrapper as the first
-  //  *              argument, and will be run with a context of the original instance.
-  //  */
-  // forEach(fn: (wrapper: this, index: number) => any): this;
+  public setProps(nextProps: any) {
+    return this.wrapper.setProps.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Maps the current array of nodes to another array. Each node is passed in as a ShallowWrapper to the map
-  //  * function.
-  //  * Returns an array of the returned values from the mapping function..
-  //  * @param fn A mapping function to be run for every node in the collection, the results of which will be mapped
-  //  *              to the returned array. Should expect a ShallowWrapper as the first argument, and will be run
-  //  *              with a context of the original instance.
-  //  */
-  // map<V>(fn: (wrapper: this, index: number) => V): V[];
+  public setState(nextState: any, callback?: any) {
+    return this.wrapper.setState.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Applies the provided reducing function to every node in the wrapper to reduce to a single value. Each node
-  //  * is passed in as a ShallowWrapper, and is processed from left to right.
-  //  */
-  // reduce<R>(fn: (prevVal: R, wrapper: this, index: number) => R, initialValue?: R): R;
+  public simulate(event: string, data?: any) {
+    return this.wrapper.simulate.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Applies the provided reducing function to every node in the wrapper to reduce to a single value.
-  //  * Each node is passed in as a ShallowWrapper, and is processed from right to left.
-  //  */
-  // reduceRight<R>(fn: (prevVal: R, wrapper: this, index: number) => R, initialValue?: R): R;
+  public slice(begin?: number, end?: number) {
+    return this.wrapper.slice.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns whether or not any of the nodes in the wrapper match the provided selector.
-  //  */
-  // some(component: Component | string): boolean;
+  public some(selector: selector) {
+    return this.wrapper.some.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns whether or not any of the nodes in the wrapper pass the provided predicate function.
-  //  */
-  // someWhere(fn: (wrapper: this) => boolean): boolean;
+  public someWhere(predicate: predicate) {
+    return this.wrapper.someWhere.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns whether or not all of the nodes in the wrapper match the provided selector.
-  //  */
-  // every(component: Component | string): boolean;
+  public state(key: any) {
+    return this.wrapper.state.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns whether or not all of the nodes in the wrapper pass the provided predicate function.
-  //  */
-  // everyWhere(fn: (wrapper: this) => boolean): boolean;
+  public tap(intercepter: any) {
+    return this.wrapper.tap.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns true if renderer returned null
-  //  */
-  // isEmptyRender(): boolean;
+  public text() {
+    return this.wrapper.text.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Renders the component to static markup and returns a Cheerio wrapper around the result.
-  //  */
-  // render(): Cheerio;
+  public type() {
+    return this.wrapper.type.apply(this.wrapper, arguments);
+  }
 
-  // /**
-  //  * Returns the type of the current node of this wrapper. If it's a composite component, this will be the
-  //  * component constructor. If it's native DOM node, it will be a string of the tag name.
-  //  *
-  //  * Note: can only be called on a wrapper of a single node.
-  //  */
-  // type(): string | ComponentClass<P> | StatelessComponent<P>;
+  public unmount() {
+    return this.wrapper.unmount.apply(this.wrapper, arguments);
+  }
+
+  public update() {
+    return this.wrapper.update.apply(this.wrapper, arguments);
+  }
+
 
   // length: number;
 }
@@ -252,4 +222,4 @@ type Component = (props: any, instance: ComponentInstance) => plusnew.JSX.Elemen
 
 export default PlusnewCommonWrapper;
 
-export { Component };
+export { Component, selector, predicate };
