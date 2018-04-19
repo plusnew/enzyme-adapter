@@ -2,6 +2,16 @@ import plusnew, { Instance, componentResult, PlusnewAbstractElement } from 'plus
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
 
+function getDomElement(instance: Instance): Element {
+  if ('ref' in instance) {
+    return (instance as any).ref;
+  }
+  if (instance.parentInstance) {
+    return getDomElement(instance.parentInstance);
+  }
+  throw new Error('Could not find dom node');
+}
+
 class PlusnewAdapter extends EnzymeAdapter {
   constructor() {
     super();
@@ -19,6 +29,10 @@ class PlusnewAdapter extends EnzymeAdapter {
       getNode() {
         return rootInstance;
       },
+      simulateEvent(instance: Instance, type: string) {
+        const event = new Event(type);
+        getDomElement(instance).dispatchEvent(event);
+      },
     };
   }
 
@@ -28,6 +42,14 @@ class PlusnewAdapter extends EnzymeAdapter {
 
   elementToNode(element: PlusnewAbstractElement) {
     return elementToTree(element);
+  }
+
+  nodeToHostNode(instance: Instance): Element {
+    return getDomElement(instance);
+  }
+
+  nodeToElement(instance: Instance) {
+    return plusnew.createElement(instance.type, instance.props);
   }
 }
 
