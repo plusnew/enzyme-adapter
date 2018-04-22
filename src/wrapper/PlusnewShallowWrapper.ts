@@ -6,6 +6,7 @@ class PlusnewShallowWrapper extends PlusnewCommonWrapper {
   constructor(wrapper: ShallowWrapper) {
     super();
     this.wrapper = wrapper;
+    this.length = this.wrapper.length;
   }
 
   public dive(): this {
