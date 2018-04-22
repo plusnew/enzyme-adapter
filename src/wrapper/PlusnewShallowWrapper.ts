@@ -3,6 +3,7 @@ import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
 
 class PlusnewShallowWrapper extends PlusnewCommonWrapper {
   wrapper: ShallowWrapper;
+  WrapperClass = PlusnewShallowWrapper;
   constructor(wrapper: ShallowWrapper) {
     super();
     this.wrapper = wrapper;

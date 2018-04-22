@@ -14,89 +14,890 @@ function getMountFunction(callback: (mountWrapper: common) => void) {
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-describe('test both renderers', () => {
-  it('button should be containable', () => {
-    getMountFunction((mount) => {
-      const Component = component(
-        () => ({}),
-        () => <button />,
-      );
-  
-      const wrapper = mount(<Component />);
-      expect(wrapper.contains(<button />)).toBe(true);
-      expect(wrapper.contains(<input />)).toBe(false);
+describe('testing both renderers with:', () => {
+  describe('at()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const NestedComponent = component(
+          () => ({}),
+          (props: {foo: string}) => <button />,
+        );
+
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <>
+              <NestedComponent foo="bar" />
+              <NestedComponent foo="baz" />
+            </>,
+        );
+    
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find(NestedComponent).at(0).prop('foo')).toBe('bar');
+        expect(wrapper.find(NestedComponent).at(1).prop('foo')).toBe('baz');
+      });
     });
   });
 
-  it('button should be containsable with class', () => {
-    getMountFunction((mount) => {
-      const Component = component(
-        () => ({}),
-        () => <button className="foo" />,
-      );
-  
-      const wrapper = mount(<Component />);
+  describe('childAt()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const NestedComponent = component(
+          () => ({}),
+          (props: {foo: string}) => <button />,
+        );
 
-      expect(wrapper.contains(<button />)).toBe(false);
-      expect(wrapper.containsMatchingElement(<button />)).toBe(true);
-
-      expect(wrapper.contains(<button className="foo" />)).toBe(true);
-      expect(wrapper.containsMatchingElement(<button className="foo" />)).toBe(true);
-
-      expect(wrapper.contains(<button className="bar" />)).toBe(false);
-      expect(wrapper.containsMatchingElement(<button className="bar" />)).toBe(false);
-
-      expect(wrapper.containsAnyMatchingElements([<button />, <input />])).toBe(true);
-      expect(wrapper.containsAnyMatchingElements([<span />, <div />])).toBe(false);
-
-      expect(wrapper.find('button').hasClass('foo')).toBe(true);
-      expect(wrapper.find('button').hasClass('bar')).toBe(false);
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div>
+              <NestedComponent foo="bar" />
+              <NestedComponent foo="baz" />
+            </div>,
+        );
+    
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('div').childAt(0).prop('foo')).toBe('bar');
+        expect(wrapper.find('div').childAt(1).prop('foo')).toBe('baz');
+      });
     });
   });
 
-  it('listitems should be containable and updatable', () => {
-    getMountFunction((mount) => {
-      const local = store([{
-        key: 0,
-        value: 'first',
-      }, {
-        key: 1,
-        value: 'second',
-      }], (state, action: {key: number, value: string}) => [...state, action]);
+  describe('children()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const NestedComponent = component(
+          () => ({}),
+          (props: {foo: string}) => <button />,
+        );
 
-      const Component = component(
-        () => ({ local }),
-        () =>
-          <ul>
-            {local.state.map(entity => 
-              <li key={entity.key}>{entity.value}</li>,
-            )}
-          </ul>,
-      );
-  
-      const wrapper = mount(<Component />);
-      expect(wrapper.find('ul').find('li').length).toBe(local.state.length);
-      expect(wrapper.contains(<li key={1}>second</li>)).toBe(true);
-      expect(wrapper.contains(<li key={0}>first</li>)).toBe(true);
-      expect(wrapper.contains(<li key={0}>wrong</li>)).toBe(false);
-
-      local.dispatch({ key: 2, value: 'third' });
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div>
+              <NestedComponent foo="bar" />
+              <NestedComponent foo="baz" />
+            </div>,
+        );
+    
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('div').children().length).toBe(2);
+      });
     });
   });
 
-  it('elements should be clickable', () => {
-    getMountFunction((mount) => {
-      const local = store(0, (state, action: number) => state + action);
-      const Component = component(
-        () => ({ local }),
-        () => <div onclick={() => {local.dispatch(2); }}>{local.state}</div>,
-      );
-  
-      const wrapper = mount(<Component />);
+  describe('closest()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () => <div className="foo"><span /></div>,
+        );
+    
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('span').closest('div').prop('className')).toBe('foo');
+      });
+    });
+  });
 
-      expect(wrapper.containsMatchingElement(<div>{0}</div>)).toBe(true);
-      wrapper.find('div').simulate('click');
-      expect(wrapper.containsMatchingElement(<div>{2}</div>)).toBe(true);
+  describe('contains()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <button />,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.contains(<button />)).toBe(true);
+        expect(wrapper.contains(<input />)).toBe(false);
+      });
+    });
+  });
+
+  describe('containsAllMatchingElements()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+    
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.containsAllMatchingElements([<span className="bar"/>, <span className="baz"/>])).toBe(true);
+        expect(wrapper.containsAllMatchingElements([<span className="bar"/>, <span className="foobar"/>])).toBe(false);
+      });
+    });
+  });
+
+  describe('containsAnyMatchingElements()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.containsAnyMatchingElements([<span className="bar" />, <span className="foobar" />])).toBe(true);
+        expect(wrapper.containsAnyMatchingElements([<span className="knsdfg" />, <span className="foobar" />])).toBe(false);
+      });
+    });
+  });
+
+  describe('containsMatchingElement()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+        expect(wrapper.containsAnyMatchingElements([<span />])).toBe(true);
+        expect(wrapper.containsAnyMatchingElements([<button />])).toBe(false);
+      });
+    });
+  });
+
+  xdescribe('context()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(() => {
+          wrapper.context('foo');
+        }).toThrow(new Error('Plusnew does not have contexts'));
+      });
+    });
+  });
+
+  xdescribe('debug()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('every()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="bar" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('span').every('.bar')).toBe(true);
+        expect(wrapper.find('span').every('.baz')).toBe(false);
+
+      });
+    });
+  });
+
+  describe('everyWhere()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="bar" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('span').everyWhere(wrapper => wrapper.hasClass('bar'))).toBe(true);
+        expect(wrapper.find('span').everyWhere(wrapper => wrapper.hasClass('foobar'))).toBe(false);
+      });
+    });
+  });
+
+  describe('exists()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('.bar').exists()).toBe(true);
+        expect(wrapper.find('.foobar').exists()).toBe(false);
+      });
+    });
+  });
+
+  describe('filter()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper.find('span').filter('.bar').length).toBe(1);
+        expect(wrapper.find('span').filter('.foobar').length).toBe(0);
+      });
+    });
+  });
+
+  describe('filterWhere()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('find()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('findWhere()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('first()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('forEach()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('get()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('hasClass()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('html()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('instance()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('is()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('isEmpty()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('key()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('last()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('matchesElement()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('name()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('not()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('parent()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('parents()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('prop()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('props()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('render()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('setContext()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('setProps()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('setState()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('simulate()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('slice()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('some()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('someWhere()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('state()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('tap()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('text()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('type()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('unmount()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('update()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          () => ({}),
+          () =>
+            <div className="foo">
+              <span className="bar" />
+              <span className="baz" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+        expect(wrapper).toBe(wrapper);
+      });
     });
   });
 });

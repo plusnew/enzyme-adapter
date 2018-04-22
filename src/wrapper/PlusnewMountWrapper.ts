@@ -3,6 +3,7 @@ import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
 
 export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
   wrapper: ReactWrapper;
+  WrapperClass = PlusnewMountWrapper;
   constructor(wrapper: ReactWrapper) {
     super();
     this.wrapper = wrapper;
