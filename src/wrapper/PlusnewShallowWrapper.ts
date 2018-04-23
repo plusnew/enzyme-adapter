@@ -1,9 +1,10 @@
-import { ShallowWrapper, ShallowRendererProps } from 'enzyme';
 import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
+import { ShallowRendererProps } from '../shallow';
+
 
 class PlusnewShallowWrapper extends PlusnewCommonWrapper {
-  wrapper: ShallowWrapper;
-  constructor(wrapper: ShallowWrapper) {
+  wrapper: PlusnewShallowWrapper;
+  constructor(wrapper: PlusnewShallowWrapper) {
     super();
     this.wrapper = wrapper;
     this.length = this.wrapper.length;

@@ -1,4 +1,4 @@
-import EnzymeAdapterPlusnew from "./EnzymeAdapterPlusnew";
+import EnzymeAdapterPlusnew from './EnzymeAdapterPlusnew';
 import shallow from './shallow';
 import mount from './mount';
 

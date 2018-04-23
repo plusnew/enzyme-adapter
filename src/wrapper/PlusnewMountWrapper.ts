@@ -1,9 +1,8 @@
-import { ReactWrapper } from 'enzyme';
 import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
 
 export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
-  wrapper: ReactWrapper;
-  constructor(wrapper: ReactWrapper) {
+  wrapper: PlusnewMountWrapper;
+  constructor(wrapper: PlusnewMountWrapper) {
     super();
     this.wrapper = wrapper;
     this.length = this.wrapper.length;
