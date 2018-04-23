@@ -6,6 +6,7 @@ export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
   constructor(wrapper: ReactWrapper) {
     super();
     this.wrapper = wrapper;
+    this.length = this.wrapper.length;
   }
 
   public detach(): void {

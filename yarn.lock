@@ -4624,9 +4624,9 @@ plusnew-webpack-config@0.5.93:
     webpack "4.5.0"
     webpack-cli "2.0.14"
 
-plusnew@0.5.94:
-  version "0.5.94"
-  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.94.tgz#d4640555ad58735555b3449548f7fbed6d16e387"
+plusnew@0.5.95:
+  version "0.5.95"
+  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.95.tgz#b8ece115ae07a9a8c2371cd00bf0ca7b8204dc61"
   dependencies:
     redchain "0.5.73"
 

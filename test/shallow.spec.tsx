@@ -4,7 +4,7 @@ import plusnew, { component } from 'plusnew';
 
 configure({ adapter: new enzymeAdapterPlusnew() });
 
-xdescribe('test shallow', () => {
+describe('test shallow', () => {
   it('button should be findable', () => {
     const Component = component(
       () => ({}),
@@ -30,7 +30,6 @@ xdescribe('test shallow', () => {
     );
 
     const wrapper = shallow(<Component />);
-    expect(wrapper.find(Component).length).toBe(1);
     expect(wrapper.contains(<NestedComponent />)).toBe(true);
     expect(wrapper.contains(<button />)).toBe(false);
     expect(wrapper.find(NestedComponent).length).toBe(1);
