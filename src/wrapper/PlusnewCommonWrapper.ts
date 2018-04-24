@@ -1,27 +1,27 @@
-import { ShallowRendererProps, CommonWrapper, EnzymeSelector, Intercepter } from 'enzyme';
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
 import { componentResult, Instance } from 'plusnew';
 
 type selector = string | componentResult<any>;
-type predicate = (instance: Instance) => boolean;
+type predicate<T> = (instance: T) => boolean;
 
 abstract class PlusnewCommonWrapper {
   abstract wrapper: any;
+  abstract WrapperClass: any;
 
   public at(index: number): this {
-    return this.wrapper.at.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.at.apply(this.wrapper, arguments));
   }
 
-  public childAt(): this {
-    return this.wrapper.childAt.apply(this.wrapper, arguments);
+  public childAt(index: number): this {
+    return new this.WrapperClass(this.wrapper.childAt.apply(this.wrapper, arguments));
   }
 
   public children(): this {
-    return this.wrapper.children.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.children.apply(this.wrapper, arguments));
   }
 
   public closest(selector: selector): this {
-    return this.wrapper.closest.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.closest.apply(this.wrapper, arguments));
   }
 
   public contains(nodeOrNodes: plusnew.JSX.Element | plusnew.JSX.Element[]): boolean {
@@ -40,9 +40,8 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.containsMatchingElement.apply(this.wrapper, arguments);
   }
 
-  public context(key: any): never {
-    throw new Error('Plusnew does not have contexts');
-    // return this.wrapper.context.apply(this.wrapper, arguments);
+  public context(key: any): any {
+    return this.wrapper.context.apply(this.wrapper, arguments);
   }
 
   public debug(): string {
@@ -53,7 +52,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.every.apply(this.wrapper, arguments);
   }
 
-  public everyWhere(predicate: predicate): boolean {
+  public everyWhere(predicate: predicate<this>): boolean {
     return this.wrapper.everyWhere.apply(this.wrapper, arguments);
   }
 
@@ -62,27 +61,27 @@ abstract class PlusnewCommonWrapper {
   }
 
   public filter(selector: selector): this {
-    return this.wrapper.filter.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.filter.apply(this.wrapper, arguments));
   }
 
-  public filterWhere(predicate: predicate): this {
-    return this.wrapper.filterWhere.apply(this.wrapper, arguments);
+  public filterWhere(predicate: predicate<this>): this {
+    return new this.WrapperClass(this.wrapper.filterWhere.apply(this.wrapper, arguments));
   }
 
   public find(selector: selector): this {
-    return this.wrapper.find.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.find.apply(this.wrapper, arguments));
   }
 
-  public findWhere(predicate: predicate): this {
-    return this.wrapper.findWhere.apply(this.wrapper, arguments);
+  public findWhere(predicate: predicate<this>): this {
+    return new this.WrapperClass(this.wrapper.findWhere.apply(this.wrapper, arguments));
   }
 
   public first(): this {
-    return this.wrapper.first.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.first.apply(this.wrapper, arguments));
   }
 
   public forEach(fn: any): this {
-    return this.wrapper.forEach.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.forEach.apply(this.wrapper, arguments));
   }
 
   public get(index: number): plusnew.JSX.Element {
@@ -114,7 +113,7 @@ abstract class PlusnewCommonWrapper {
   }
 
   public last(): this {
-    return this.wrapper.last.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.last.apply(this.wrapper, arguments));
   }
 
   public map<T>(fn: (node: this) => T): T[] {
@@ -130,15 +129,15 @@ abstract class PlusnewCommonWrapper {
   }
 
   public not(selector: selector): this {
-    return this.wrapper.not.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.not.apply(this.wrapper, arguments));
   }
 
   public parent(): this {
-    return this.wrapper.parent.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.parent.apply(this.wrapper, arguments));
   }
 
   public parents(): this {
-    return this.wrapper.parents.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.parents.apply(this.wrapper, arguments));
   }
 
   public prop(key: string): any {
@@ -161,9 +160,8 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.render.apply(this.wrapper, arguments);
   }
 
-  public setContext(context: any): never {
-    throw new Error('Plusnew does not have contexts');
-    // return this.wrapper.setContext.apply(this.wrapper, arguments);
+  public setContext(context: any): any {
+    return this.wrapper.setContext.apply(this.wrapper, arguments);
   }
 
   public setProps(nextProps: any) {
@@ -175,18 +173,18 @@ abstract class PlusnewCommonWrapper {
   }
 
   public simulate(event: string, data?: any): this {
-    return this.wrapper.simulate.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.simulate.apply(this.wrapper, arguments));
   }
 
   public slice(begin?: number, end?: number): this {
-    return this.wrapper.slice.apply(this.wrapper, arguments);
+    return new this.WrapperClass(this.wrapper.slice.apply(this.wrapper, arguments));
   }
 
   public some(selector: selector): boolean {
     return this.wrapper.some.apply(this.wrapper, arguments);
   }
 
-  public someWhere(predicate: predicate): boolean {
+  public someWhere(predicate: predicate<this>): boolean {
     return this.wrapper.someWhere.apply(this.wrapper, arguments);
   }
 

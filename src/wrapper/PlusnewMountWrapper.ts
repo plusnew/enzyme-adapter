@@ -1,7 +1,9 @@
-import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
+import { Component } from './PlusnewCommonWrapper';
+import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
-export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
+export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
   wrapper: PlusnewMountWrapper;
+  WrapperClass = PlusnewMountWrapper;
   constructor(wrapper: PlusnewMountWrapper) {
     super();
     this.wrapper = wrapper;

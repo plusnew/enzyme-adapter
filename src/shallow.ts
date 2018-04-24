@@ -1,4 +1,4 @@
-import { shallow, ShallowWrapper, ShallowRendererProps } from 'enzyme';
+import { shallow } from 'enzyme';
 import plusnew, { PlusnewAbstractElement, Plusnew } from 'plusnew';
 import { PlusnewElement } from 'plusnew/dist/src/PlusnewAbstractElement';
 import { props } from 'plusnew/dist/src/interfaces/component';
