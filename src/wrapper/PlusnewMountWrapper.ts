@@ -1,7 +1,6 @@
 import { Component } from './PlusnewCommonWrapper';
 import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
-
 export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
   wrapper: PlusnewMountWrapper;
   WrapperClass = PlusnewMountWrapper;
