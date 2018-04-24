@@ -13,10 +13,6 @@ function getDomElement(instance: Instance): Element {
 }
 
 class PlusnewAdapter extends EnzymeAdapter {
-  constructor() {
-    super();
-  }
-
   createRenderer(options: {mode: 'shallow' | 'mount'}) {
     const container = document.createElement('div');
     let rootInstance: Instance;

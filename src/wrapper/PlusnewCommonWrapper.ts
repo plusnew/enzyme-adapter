@@ -1,9 +1,8 @@
-import { ShallowRendererProps, CommonWrapper, EnzymeSelector, Intercepter } from 'enzyme';
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
 import { componentResult, Instance } from 'plusnew';
 
 type selector = string | componentResult<any>;
-type predicate = (instance: Instance) => boolean;
+type predicate<T> = (instance: T) => boolean;
 
 abstract class PlusnewCommonWrapper {
   abstract wrapper: any;
@@ -53,7 +52,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.every.apply(this.wrapper, arguments);
   }
 
-  public everyWhere(predicate: (instance: this) => boolean): boolean {
+  public everyWhere(predicate: predicate<this>): boolean {
     return this.wrapper.everyWhere.apply(this.wrapper, arguments);
   }
 
@@ -65,7 +64,7 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.filter.apply(this.wrapper, arguments));
   }
 
-  public filterWhere(predicate: (instance: this) => boolean): this {
+  public filterWhere(predicate: predicate<this>): this {
     return new this.WrapperClass(this.wrapper.filterWhere.apply(this.wrapper, arguments));
   }
 
@@ -73,7 +72,7 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.find.apply(this.wrapper, arguments));
   }
 
-  public findWhere(predicate: (instance: this) => boolean): this {
+  public findWhere(predicate: predicate<this>): this {
     return new this.WrapperClass(this.wrapper.findWhere.apply(this.wrapper, arguments));
   }
 
@@ -185,7 +184,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.some.apply(this.wrapper, arguments);
   }
 
-  public someWhere(predicate: (instance: this) => boolean): boolean {
+  public someWhere(predicate: predicate<this>): boolean {
     return this.wrapper.someWhere.apply(this.wrapper, arguments);
   }
 

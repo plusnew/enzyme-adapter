@@ -1,10 +1,11 @@
-import { ReactWrapper } from 'enzyme';
-import PlusnewCommonWrapper, { Component } from './PlusnewCommonWrapper';
+import { Component } from './PlusnewCommonWrapper';
+import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
-export default class PlusnewMountWrapper extends PlusnewCommonWrapper {
-  wrapper: ReactWrapper;
+
+export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
+  wrapper: PlusnewMountWrapper;
   WrapperClass = PlusnewMountWrapper;
-  constructor(wrapper: ReactWrapper) {
+  constructor(wrapper: PlusnewMountWrapper) {
     super();
     this.wrapper = wrapper;
     this.length = this.wrapper.length;
