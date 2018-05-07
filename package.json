@@ -1,6 +1,6 @@
 {
   "name": "enzyme-adapter-plusnew",
-  "version": "0.5.98",
+  "version": "0.5.99",
   "description": "adapter for enzyme testsuite to the plusnew framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "enzyme": "3.3.0",
     "plusnew": "0.5.95",
     "plusnew-karma-config": "0.5.69",
-    "plusnew-webpack-config": "0.5.93",
+    "plusnew-webpack-config": "0.5.94",
     "tslint": "5.9.1",
     "tslint-config-airbnb": "5.8.0",
     "typescript": "2.8.1"
