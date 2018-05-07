@@ -7,7 +7,7 @@ class PlusnewShallowWrapper extends PlusnewNurturedWrapper {
   constructor(wrapper: PlusnewShallowWrapper) {
     super();
     this.wrapper = wrapper;
-    this.length = this.wrapper.length;
+    this.length = this.wrapper ? this.wrapper.length : 0;
   }
 
   public dive(): this {

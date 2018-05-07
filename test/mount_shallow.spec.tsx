@@ -724,17 +724,23 @@ describe('testing both renderers with:', () => {
   describe('simulate()', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
+        const fooSpy = jasmine.createSpy('fooSpy');
+        const barSpy = jasmine.createSpy('barSpy');
+
         const MainComponent = component(
           () => ({}),
           () =>
-            <div className="foo">
-              <span className="bar" />
+            <div className="foo" onclick={fooSpy}>
+              <span className="bar" onclick={barSpy}/>
               <span className="baz" />
             </div>,
         );
 
         const wrapper = mount(<MainComponent />);
-        expect(wrapper).toBe(wrapper);
+        wrapper.find('.bar').simulate('click');
+
+        expect(fooSpy.calls.count()).toBe(1);
+        expect(barSpy.calls.count()).toBe(1);
       });
     });
   });
