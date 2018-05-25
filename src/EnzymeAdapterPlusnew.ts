@@ -26,7 +26,7 @@ class PlusnewAdapter extends EnzymeAdapter {
         return rootInstance;
       },
       simulateEvent(instance: Instance, type: string) {
-        const event = new Event(type, { bubbles: true });
+        const event = new Event(type, { bubbles: true, cancelable: true });
         getDomElement(instance).dispatchEvent(event);
       },
     };
