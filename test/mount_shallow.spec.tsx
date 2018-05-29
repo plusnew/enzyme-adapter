@@ -874,17 +874,30 @@ describe('testing both renderers with:', () => {
   describe('unmount()', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
+        const local = store(0, (state, action: number) => action);
+
+        const render = jasmine.createSpy('render', () =>
+          <div className="foo">
+            <span className="bar" />
+            <span className="baz" />
+          </div>,
+        );
         const MainComponent = component(
-          () => ({}),
-          () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
-            </div>,
+          () => ({ local }),
+          render,
         );
 
         const wrapper = mount(<MainComponent />);
-        expect(wrapper).toBe(wrapper);
+        expect(render.calls.count()).toBe(1);
+
+        local.dispatch(1);
+
+        expect(render.calls.count()).toBe(2);
+
+        wrapper.unmount();
+        local.dispatch(2);
+
+        expect(render.calls.count()).toBe(2);
       });
     });
   });
