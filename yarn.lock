@@ -4609,11 +4609,11 @@ plusnew-webpack-config@0.5.94:
     webpack "4.5.0"
     webpack-cli "2.0.14"
 
-plusnew@0.5.95:
-  version "0.5.95"
-  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.95.tgz#b8ece115ae07a9a8c2371cd00bf0ca7b8204dc61"
+plusnew@0.5.105:
+  version "0.5.105"
+  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.5.105.tgz#ebe410098da959da698a7aaccb25490501e121f5"
   dependencies:
-    redchain "0.5.73"
+    redchain "0.5.102"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -4907,9 +4907,9 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-redchain@0.5.73:
-  version "0.5.73"
-  resolved "https://registry.yarnpkg.com/redchain/-/redchain-0.5.73.tgz#888a4a156ec42242db360f4464ad4d7fc56ea8cf"
+redchain@0.5.102:
+  version "0.5.102"
+  resolved "https://registry.yarnpkg.com/redchain/-/redchain-0.5.102.tgz#37693e07fbff6c397a62b0fcdf7eadbe7c471873"
 
 redent@^1.0.0:
   version "1.0.0"

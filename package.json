@@ -23,7 +23,7 @@
   "devDependencies": {
     "concurrently": "3.5.1",
     "enzyme": "3.3.0",
-    "plusnew": "0.5.95",
+    "plusnew": "0.5.105",
     "plusnew-karma-config": "0.5.69",
     "plusnew-webpack-config": "0.5.94",
     "tslint": "5.9.1",

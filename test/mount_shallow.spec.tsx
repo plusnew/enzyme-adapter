@@ -19,11 +19,13 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
+          'Component',
           () => ({}),
           (props: {foo: string}) => <button />,
         );
 
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <>
@@ -43,11 +45,13 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
+          'Component',
           () => ({}),
           (props: {foo: string}) => <button />,
         );
 
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div>
@@ -67,11 +71,13 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
+          'Component',
           () => ({}),
           (props: {foo: string}) => <button />,
         );
 
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div>
@@ -90,6 +96,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () => <div className="foo"><span /></div>,
         );
@@ -104,6 +111,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <button />,
@@ -114,12 +122,27 @@ describe('testing both renderers with:', () => {
         expect(wrapper.contains(<input />)).toBe(false);
       });
     });
+
+    xit('basic with children', () => {
+      getMountFunction((mount) => {
+        const MainComponent = component(
+          'Component',
+          () => ({}),
+          (props: {children: any}) =>
+            <button>{props.children}</button>,
+        );
+
+        const wrapper = mount(<MainComponent>text</MainComponent>);
+        expect(wrapper.contains(<button>text</button>)).toBe(true);
+      });
+    });
   });
 
   describe('containsAllMatchingElements()', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -139,6 +162,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -158,6 +182,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -178,6 +203,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -198,6 +224,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -216,6 +243,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -236,6 +264,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -255,6 +284,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -274,6 +304,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -293,6 +324,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -311,6 +343,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -329,6 +362,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -347,6 +381,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -365,6 +400,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -383,6 +419,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -401,6 +438,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -419,6 +457,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -437,6 +476,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -455,6 +495,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -473,6 +514,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -491,6 +533,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -509,6 +552,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -527,6 +571,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -545,6 +590,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -563,6 +609,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -581,6 +628,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -599,6 +647,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -617,6 +666,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -635,6 +685,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -653,6 +704,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -671,6 +723,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -689,6 +742,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -707,6 +761,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -728,6 +783,7 @@ describe('testing both renderers with:', () => {
         const barSpy = jasmine.createSpy('barSpy');
 
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo" onclick={fooSpy}>
@@ -749,6 +805,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -767,6 +824,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -785,6 +843,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -803,6 +862,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -821,6 +881,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -839,6 +900,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -857,6 +919,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">
@@ -883,6 +946,7 @@ describe('testing both renderers with:', () => {
           </div>,
         );
         const MainComponent = component(
+          'Component',
           () => ({ local }),
           render,
         );
@@ -906,6 +970,7 @@ describe('testing both renderers with:', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
+          'Component',
           () => ({}),
           () =>
             <div className="foo">

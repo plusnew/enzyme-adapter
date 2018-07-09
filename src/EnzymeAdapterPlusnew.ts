@@ -30,7 +30,7 @@ class PlusnewAdapter extends EnzymeAdapter {
         getDomElement(instance).dispatchEvent(event);
       },
       unmount() {
-        rootInstance.remove();
+        rootInstance.remove(false);
       },
     };
   }

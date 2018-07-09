@@ -4,6 +4,7 @@ import { ApplicationElement } from 'plusnew/dist/src/interfaces/component';
 export default function elementToTree(element: ApplicationElement): any {
   if (elementTypeChecker.isComponentElement(element)) {
     const currentElement = element as PlusnewAbstractElement;
+
     return {
       nodeType: 'function',
       type: currentElement.type,
