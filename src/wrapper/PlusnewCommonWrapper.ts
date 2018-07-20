@@ -1,7 +1,11 @@
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
-import { componentResult, Instance } from 'plusnew';
+import { Component as AppComponent, Instance } from 'plusnew';
 
-type selector = string | componentResult<any>;
+export type AppComponentContainer = {
+  new (props: any): AppComponent<any>;
+};
+
+type selector = string | AppComponentContainer;
 type predicate<T> = (instance: T) => boolean;
 
 abstract class PlusnewCommonWrapper {
