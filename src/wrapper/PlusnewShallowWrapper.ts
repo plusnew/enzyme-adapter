@@ -1,4 +1,3 @@
-import { Component }  from './PlusnewCommonWrapper';
 import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
 class PlusnewShallowWrapper extends PlusnewNurturedWrapper {

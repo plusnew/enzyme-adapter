@@ -1,4 +1,4 @@
-import plusnew, { Instance, componentResult, PlusnewAbstractElement } from 'plusnew';
+import plusnew, { Instance, PlusnewAbstractElement } from 'plusnew';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
 
@@ -54,4 +54,4 @@ class PlusnewAdapter extends EnzymeAdapter {
 
 export default PlusnewAdapter;
 
-export { componentResult, PlusnewAbstractElement };
+export { PlusnewAbstractElement };

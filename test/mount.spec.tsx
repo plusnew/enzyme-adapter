@@ -8,7 +8,6 @@ describe('test fullrender', () => {
   it('button should be findable', () => {
     const Component = component(
       'Component',
-      () => ({}),
       () => <button />,
     );
 
@@ -20,13 +19,11 @@ describe('test fullrender', () => {
   it('button should not be findable in nested component', () => {
     const NestedComponent = component(
       'Component',
-      () => ({}),
       () => <button />,
     );
 
     const Component = component(
       'Component',
-      () => ({}),
       () => <NestedComponent />,
     );
 

@@ -1,11 +1,8 @@
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
-import { Component as AppComponent, Instance } from 'plusnew';
+import { ComponentContainer, Instance } from 'plusnew';
 
-export type AppComponentContainer = {
-  new (props: any): AppComponent<any>;
-};
 
-type selector = string | AppComponentContainer;
+type selector = string | ComponentContainer<any>;
 type predicate<T> = (instance: T) => boolean;
 
 abstract class PlusnewCommonWrapper {
@@ -219,8 +216,6 @@ abstract class PlusnewCommonWrapper {
   length: number;
 }
 
-type Component = (props: any, instance: ComponentInstance) => plusnew.JSX.Element | null;
-
 export default PlusnewCommonWrapper;
 
-export { Component, selector, predicate };
+export { selector, predicate };
