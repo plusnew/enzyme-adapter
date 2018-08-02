@@ -4609,9 +4609,9 @@ plusnew-webpack-config@0.5.94:
     webpack "4.5.0"
     webpack-cli "2.0.14"
 
-plusnew@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.6.2.tgz#4f3e059d625cf0d3bc80fb2c99ef7567f489f667"
+plusnew@0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.6.3.tgz#13de91474c3abb0c39b3f6c2c795320876866cd0"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
