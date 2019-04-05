@@ -744,7 +744,7 @@ describe('testing both renderers with:', () => {
           'Component',
           () =>
             <div className="foo" onclick={fooSpy}>
-              <span className="bar" onclick={barSpy}/>
+              <span className="bar" onclick={barSpy} />
               <span className="baz" />
             </div>,
         );
@@ -754,6 +754,61 @@ describe('testing both renderers with:', () => {
 
         expect(fooSpy.calls.count()).toBe(1);
         expect(barSpy.calls.count()).toBe(1);
+      });
+    });
+
+    it('with given event object with bubbling', () => {
+      getMountFunction((mount) => {
+        const fooSpy = jasmine.createSpy('fooSpy');
+        const barSpy = jasmine.createSpy('barSpy');
+
+        const MainComponent = component(
+          'Component',
+          () =>
+            <div className="foo" onclick={fooSpy}>
+              <span className="bar" onclick={barSpy} />
+              <span className="baz" />
+            </div>,
+        );
+
+        const event = new Event('click', {
+          bubbles: true,
+        });
+
+        const wrapper = mount(<MainComponent />);
+        wrapper.find('.bar').simulate(event);
+
+        expect(fooSpy.calls.count()).toBe(1);
+        expect(fooSpy.calls.first().args[0]).toBe(event);
+        expect(barSpy.calls.count()).toBe(1);
+        expect(fooSpy.calls.first().args[0]).toBe(event);
+      });
+    });
+
+    it('with given event object without bubbling', () => {
+      getMountFunction((mount) => {
+        const fooSpy = jasmine.createSpy('fooSpy');
+        const barSpy = jasmine.createSpy('barSpy');
+
+        const MainComponent = component(
+          'Component',
+          () =>
+            <div className="foo" onclick={fooSpy}>
+              <span className="bar" onclick={barSpy} />
+              <span className="baz" />
+            </div>,
+        );
+
+        const event = new Event('click', {
+          bubbles: false,
+        });
+
+        const wrapper = mount(<MainComponent />);
+        wrapper.find('.bar').simulate(event);
+
+        expect(fooSpy.calls.count()).toBe(0);
+        expect(barSpy.calls.count()).toBe(1);
+        expect(barSpy.calls.first().args[0]).toBe(event);
       });
     });
   });

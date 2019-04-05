@@ -173,7 +173,9 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.setState.apply(this.wrapper, arguments);
   }
 
-  public simulate(event: string, data?: any): this {
+  public simulate(event: string, data?: any): this;
+  public simulate(event: Event): this;
+  public simulate(event: string | Event, data?: any): this {
     return new this.WrapperClass(this.wrapper.simulate.apply(this.wrapper, arguments));
   }
 
