@@ -3,7 +3,7 @@ language: node_js
 dist: trusty
 
 node_js:
-  - 9
+  - node
 
 sudo: required
 
@@ -11,7 +11,7 @@ before_install:
   - "yarn add coveralls"
 
 after_success:
-  - "cat test/coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+  - "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
 
 notifications:
   email:
