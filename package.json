@@ -1,14 +1,14 @@
 {
   "name": "enzyme-adapter-plusnew",
-  "version": "0.6.2",
+  "version": "0.6.43",
   "description": "adapter for enzyme testsuite to the plusnew framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "yarn run test && yarn run build",
     "build": "webpack --config configs/webpack.prod.conf.js",
-    "test": "webpack --config configs/webpack.test.conf.js && karma start configs/karma.conf.js --no-auto-watch --single-run",
-    "test:watch": "concurrently  \"webpack --config configs/webpack.test.conf.js --watch\" \"karma start configs/karma.conf.js\""
+    "test": "karma start configs/karma.conf.js --no-auto-watch --single-run",
+    "test:watch": "karma start configs/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -21,14 +21,13 @@
   },
   "homepage": "https://github.com/plusnew/enzyme-adapter-plusnew#readme",
   "devDependencies": {
-    "concurrently": "3.5.1",
-    "enzyme": "3.3.0",
-    "plusnew": "0.6.3",
-    "plusnew-karma-config": "0.5.69",
-    "plusnew-webpack-config": "0.5.94",
-    "tslint": "5.9.1",
-    "tslint-config-airbnb": "5.8.0",
-    "typescript": "3.0.1"
+    "enzyme": "3.9.0",
+    "plusnew": "0.6.42",
+    "plusnew-karma-config": "0.6.41",
+    "plusnew-webpack-config": "0.6.41",
+    "tslint": "5.15.0",
+    "tslint-config-airbnb": "5.11.1",
+    "typescript": "3.4.3"
   },
   "dependencies": {}
 }

@@ -13,7 +13,7 @@ describe('test shallow', () => {
 
     const wrapper = shallow(<Component />);
     expect(wrapper.contains(<button />)).toBe(true);
-    expect(wrapper.contains(<input />)).toBe(false);
+    expect(wrapper.contains(<div />)).toBe(false);
     expect(wrapper.find('button').length).toBe(1);
     expect(wrapper.find('input').length).toBe(0);
   });
@@ -36,4 +36,3 @@ describe('test shallow', () => {
     expect(wrapper.find('button').length).toBe(0);
   });
 });
-
