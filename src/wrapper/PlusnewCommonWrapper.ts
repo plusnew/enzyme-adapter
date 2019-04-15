@@ -89,6 +89,10 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.get.apply(this.wrapper, arguments);
   }
 
+  public getDOMNode(): Element {
+    return this.wrapper.getDOMNode.apply(this.wrapper, arguments);
+  }
+
   public hasClass(className: string): boolean {
     return this.wrapper.hasClass.apply(this.wrapper, arguments);
   }
