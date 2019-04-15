@@ -13,7 +13,7 @@ describe('test fullrender', () => {
 
     const wrapper = mount(<Component />);
     expect(wrapper.contains(<button />)).toBe(true);
-    expect(wrapper.contains(<input />)).toBe(false);
+    expect(wrapper.contains(<div />)).toBe(false);
   });
 
   it('button should not be findable in nested component', () => {
@@ -29,5 +29,24 @@ describe('test fullrender', () => {
 
     const wrapper = mount(<Component />);
     expect(wrapper.contains(<button />)).toBe(true);
+  });
+
+  describe('getDomNode()', () => {
+    it('basic test', () => {
+      const MainComponent = component(
+        'Component',
+        () =>
+          <div className="foo">
+            <span className="bar" />
+            <span className="baz" />
+          </div>,
+      );
+
+      const wrapper = mount(<MainComponent />);
+
+      const bazElement = wrapper.find('span').find('.baz');
+      expect(bazElement.getDOMNode().tagName).toBe('SPAN');
+      expect(bazElement.getDOMNode().className).toBe('baz');
+    });
   });
 });

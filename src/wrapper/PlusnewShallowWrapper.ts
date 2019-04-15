@@ -1,7 +1,7 @@
 import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
 class PlusnewShallowWrapper extends PlusnewNurturedWrapper {
-  wrapper: PlusnewShallowWrapper;
+  wrapper: any;
   WrapperClass = PlusnewShallowWrapper;
   constructor(wrapper: PlusnewShallowWrapper) {
     super();

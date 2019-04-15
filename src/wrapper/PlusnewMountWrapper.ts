@@ -1,7 +1,7 @@
 import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 
 export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
-  wrapper: PlusnewMountWrapper;
+  wrapper: any;
   WrapperClass = PlusnewMountWrapper;
   constructor(wrapper: PlusnewMountWrapper) {
     super();
@@ -19,5 +19,9 @@ export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
 
   public ref(refName: string): this {
     return this.wrapper.ref.apply(this.wrapper, arguments);
+  }
+
+  public getDOMNode(): Element {
+    return this.wrapper.getDOMNode.apply(this.wrapper, arguments);
   }
 }

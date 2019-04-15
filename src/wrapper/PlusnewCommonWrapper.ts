@@ -1,7 +1,6 @@
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
 import { ComponentContainer, Instance } from 'plusnew';
 
-
 type selector = string | {} | ComponentContainer<any>;
 type predicate<T> = (instance: T) => boolean;
 
@@ -87,10 +86,6 @@ abstract class PlusnewCommonWrapper {
 
   public get(index: number): plusnew.JSX.Element {
     return this.wrapper.get.apply(this.wrapper, arguments);
-  }
-
-  public getDOMNode(): Element {
-    return this.wrapper.getDOMNode.apply(this.wrapper, arguments);
   }
 
   public hasClass(className: string): boolean {

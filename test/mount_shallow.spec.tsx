@@ -20,7 +20,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{foo: string}>) => <button />,
+          (Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -31,7 +31,7 @@ describe('testing both renderers with:', () => {
               <NestedComponent foo="baz" />
             </>,
         );
-    
+
         const wrapper = mount(<MainComponent />);
         expect(wrapper.find(NestedComponent).at(0).prop('foo')).toBe('bar');
         expect(wrapper.find(NestedComponent).at(1).prop('foo')).toBe('baz');
@@ -44,7 +44,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{foo: string}>) => <button />,
+          (Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -55,7 +55,7 @@ describe('testing both renderers with:', () => {
               <NestedComponent foo="baz" />
             </div>,
         );
-    
+
         const wrapper = mount(<MainComponent />);
         expect(wrapper.find('div').childAt(0).prop('foo')).toBe('bar');
         expect(wrapper.find('div').childAt(1).prop('foo')).toBe('baz');
@@ -68,7 +68,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{foo: string}>) => <button />,
+          (Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -79,7 +79,7 @@ describe('testing both renderers with:', () => {
               <NestedComponent foo="baz" />
             </div>,
         );
-    
+
         const wrapper = mount(<MainComponent />);
         expect(wrapper.find('div').children().length).toBe(2);
       });
@@ -93,7 +93,7 @@ describe('testing both renderers with:', () => {
           'Component',
           () => <div className="foo"><span /></div>,
         );
-    
+
         const wrapper = mount(<MainComponent />);
         expect(wrapper.find('span').closest('div').prop('className')).toBe('foo');
       });
@@ -111,7 +111,7 @@ describe('testing both renderers with:', () => {
 
         const wrapper = mount(<MainComponent />);
         expect(wrapper.contains(<button />)).toBe(true);
-        expect(wrapper.contains(<input />)).toBe(false);
+        expect(wrapper.contains(<div />)).toBe(false);
       });
     });
 
@@ -119,8 +119,8 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
           'Component',
-          (Props: Props<{children: any}>) =>
-            <button><Props render={props => props.children} /></button>,
+          (Props: Props<{ children: any }>) =>
+            <button><Props>{props => props.children}</Props></button>,
         );
 
         const wrapper = mount(<MainComponent>text</MainComponent>);
@@ -140,10 +140,10 @@ describe('testing both renderers with:', () => {
               <span className="baz" />
             </div>,
         );
-    
+
         const wrapper = mount(<MainComponent />);
-        expect(wrapper.containsAllMatchingElements([<span className="bar"/>, <span className="baz"/>])).toBe(true);
-        expect(wrapper.containsAllMatchingElements([<span className="bar"/>, <span className="foobar"/>])).toBe(false);
+        expect(wrapper.containsAllMatchingElements([<span className="bar" />, <span className="baz" />])).toBe(true);
+        expect(wrapper.containsAllMatchingElements([<span className="bar" />, <span className="foobar" />])).toBe(false);
       });
     });
   });
@@ -952,7 +952,7 @@ describe('testing both renderers with:', () => {
         );
         const MainComponent = component(
           'Component',
-          () =>  <local.Observer render={render} />,
+          () => <local.Observer>{render}</local.Observer>,
         );
 
         const wrapper = mount(<MainComponent />);

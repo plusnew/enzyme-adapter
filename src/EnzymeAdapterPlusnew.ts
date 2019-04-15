@@ -13,7 +13,7 @@ function getDomElement(instance: Instance): Element {
 }
 
 class PlusnewAdapter extends EnzymeAdapter {
-  createRenderer(options: {mode: 'shallow' | 'mount'}) {
+  createRenderer(options: { mode: 'shallow' | 'mount' }) {
     const container = document.createElement('div');
     let rootInstance: Instance;
     return {
@@ -52,7 +52,7 @@ class PlusnewAdapter extends EnzymeAdapter {
   }
 
   nodeToElement(instance: Instance) {
-    return plusnew.createElement(instance.type, instance.props);
+    return plusnew.createElement(instance.type as any, instance.props);
   }
 }
 
