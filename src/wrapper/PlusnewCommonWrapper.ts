@@ -92,6 +92,10 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.hasClass.apply(this.wrapper, arguments);
   }
 
+  public hostNodes(): this {
+    return new this.WrapperClass(this.wrapper.hostNodes.apply(this.wrapper, arguments));
+  }
+
   public html(): string {
     return this.wrapper.html.apply(this.wrapper, arguments);
   }

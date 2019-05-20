@@ -3,11 +3,11 @@ import PlusnewCommonWrapper from 'wrapper/PlusnewCommonWrapper';
 import { configure } from 'enzyme';
 import plusnew, { component, store, Props } from 'plusnew';
 
-interface common {
+interface Common {
   (element: plusnew.JSX.Element): PlusnewCommonWrapper;
 }
 
-function getMountFunction(callback: (mountWrapper: common) => void) {
+function getMountFunction(callback: (mountWrapper: Common) => void) {
   callback(mount as any);
   callback(shallow as any);
 }
@@ -424,6 +424,31 @@ describe('testing both renderers with:', () => {
 
         const wrapper = mount(<MainComponent />);
         expect(wrapper).toBe(wrapper);
+      });
+    });
+  });
+
+  describe('hostNodes()', () => {
+    it('basic test', () => {
+      getMountFunction((mount) => {
+        const MyComponent = component(
+          'MyComponent',
+          (_Props: Props<{ className: string }>) => false,
+        );
+
+        const MainComponent = component(
+          'Component',
+          () =>
+            <div>
+              <MyComponent className="foo" />
+              <span className="foo" />
+            </div>,
+        );
+
+        const wrapper = mount(<MainComponent />);
+
+        const twoNodes = wrapper.find('.foo');
+        expect(twoNodes.hostNodes().length).toBe(1);
       });
     });
   });
