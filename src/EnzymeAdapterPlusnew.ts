@@ -1,4 +1,4 @@
-import plusnew, { Instance, PlusnewAbstractElement } from 'plusnew';
+import plusnew, { Instance, PlusnewAbstractElement, renderOptions } from 'plusnew';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
 
@@ -6,20 +6,18 @@ function getDomElement(instance: Instance): Element {
   if ('ref' in instance) {
     return (instance as any).ref;
   }
-  if (instance.parentInstance) {
-    return getDomElement(instance.parentInstance);
-  }
-  throw new Error('Could not find dom node');
+  throw new Error('The given Instance is not a DomNode');
 }
 
 class PlusnewAdapter extends EnzymeAdapter {
-  createRenderer(options: { mode: 'shallow' | 'mount' }) {
-    const container = document.createElement('div');
+  createRenderer(options: { mode: 'shallow' | 'mount', attachTo?: HTMLElement, plusnewRenderOptions: renderOptions }) {
+    const container = options.attachTo || document.createElement('div');
     let rootInstance: Instance;
     return {
       render(element: plusnew.JSX.Element) {
         rootInstance = plusnew.render(element, container, {
           createChildrenComponents: options.mode === 'mount',
+          ...options.plusnewRenderOptions,
         });
       },
       getNode() {
