@@ -1,4 +1,4 @@
-import { Component } from 'plusnew';
+import { ComponentContainer } from 'plusnew';
 
 export function getAwaitAllHandle() {
   let todoQueue: Promise<any>[] = [];
@@ -21,6 +21,6 @@ export function getAwaitAllHandle() {
   };
 }
 
-export function getComponentPartial<props>(component: Component<props>): Component<Partial<props>> {
+export function getComponentPartial<props>(component: ComponentContainer<props>): ComponentContainer<Partial<props>> {
   return component as any;
 }
