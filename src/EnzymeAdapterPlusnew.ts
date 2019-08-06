@@ -1,4 +1,4 @@
-import plusnew, { Instance, PlusnewAbstractElement, renderOptions } from 'plusnew';
+import plusnew, { Instance, PlusnewAbstractElement, renderOptions } from '@plusnew/core';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
 

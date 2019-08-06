@@ -1,4 +1,4 @@
-import { elementTypeChecker, PlusnewAbstractElement } from 'plusnew';
+import { elementTypeChecker, PlusnewAbstractElement } from '@plusnew/core';
 import { ApplicationElement } from 'plusnew/dist/src/interfaces/component';
 
 export default function elementToTree(element: ApplicationElement): any {

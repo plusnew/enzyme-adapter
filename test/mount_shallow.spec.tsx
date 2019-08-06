@@ -1,7 +1,7 @@
 import enzymeAdapterPlusnew, { mount, shallow } from 'index';
 import PlusnewCommonWrapper from 'wrapper/PlusnewCommonWrapper';
 import { configure } from 'enzyme';
-import plusnew, { component, store, Props } from 'plusnew';
+import plusnew, { component, store, Props } from '@plusnew/core';
 
 interface Common {
   (element: plusnew.JSX.Element): PlusnewCommonWrapper;

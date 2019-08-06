@@ -109,6 +109,11 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
+"@plusnew/core@^0.6.50":
+  version "0.6.50"
+  resolved "https://registry.yarnpkg.com/@plusnew/core/-/core-0.6.50.tgz#b2614780826e084ff068236f94da9df6fc584f24"
+  integrity sha512-Ehl4c/w/ruycm2xpnOtWq1PTMKTLIB4R7mEbEyrcYZB/WIlzv1P8ejesDDozS0eMi7cX+vLmcmMeenkmOr+7Mw==
+
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
@@ -3740,11 +3745,6 @@ plusnew-webpack-config@0.6.50:
     istanbul-instrumenter-loader "3.0.1"
     webpack "4.36.1"
     webpack-cli "3.3.6"
-
-plusnew@0.6.50:
-  version "0.6.50"
-  resolved "https://registry.yarnpkg.com/plusnew/-/plusnew-0.6.50.tgz#61e83aa089878f66099214ffbc200f8e26e1890e"
-  integrity sha512-ITT2Y4/XcMxLrFvAZVUJhYCnb7QQ6XW7/bAv4Q0wESTpVY4ySNLWflxJLkfW9Baj4HwF98heh/5jFP1uyQmhfw==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

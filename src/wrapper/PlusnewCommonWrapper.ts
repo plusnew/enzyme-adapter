@@ -1,5 +1,5 @@
 import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
-import { ComponentContainer, Instance } from 'plusnew';
+import { ComponentContainer, Instance } from '@plusnew/core';
 
 type selector = string | {} | ComponentContainer<any>;
 type predicate<T> = (instance: T) => boolean;
