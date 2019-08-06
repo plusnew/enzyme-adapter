@@ -1,3 +1,3 @@
 const constants = require('./constants');
 
-module.exports = require('plusnew-webpack-config').dev('enzyme-adapter-plusnew', constants.baseDiretory);
+module.exports = require('plusnew-webpack-config').dev('@plusnew/enzyme-adapter', constants.baseDiretory);
