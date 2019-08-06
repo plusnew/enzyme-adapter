@@ -1,4 +1,4 @@
-import ComponentInstance from 'plusnew/dist/src/instances/types/Component/Instance';
+import ComponentInstance from '@plusnew/core/dist/src/instances/types/Component/Instance';
 import { ComponentContainer, Instance } from '@plusnew/core';
 
 type selector = string | {} | ComponentContainer<any>;
