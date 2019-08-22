@@ -21,6 +21,10 @@ export function getAwaitAllHandle() {
   };
 }
 
-export function getComponentPartial<props>(component: ComponentContainer<props>): ComponentContainer<Partial<props>> {
+export function getComponentPartial<
+  props,
+  HostElement,
+  HostTextElement
+>(component: ComponentContainer<props, HostElement, HostTextElement>): ComponentContainer<Partial<props>, HostElement, HostTextElement> {
   return component as any;
 }

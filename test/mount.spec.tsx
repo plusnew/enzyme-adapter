@@ -36,9 +36,9 @@ describe('test fullrender', () => {
       const MainComponent = component(
         'Component',
         () =>
-          <div className="foo">
-            <span className="bar" />
-            <span className="baz" />
+          <div class="foo">
+            <span class="bar" />
+            <span class="baz" />
           </div>,
       );
 

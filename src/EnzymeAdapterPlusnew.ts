@@ -1,8 +1,10 @@
 import plusnew, { Instance, PlusnewAbstractElement, renderOptions } from '@plusnew/core';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
+import driver from '@plusnew/driver-dom';
+import './enzymeMonkeyPatch';
 
-function getDomElement(instance: Instance): Element {
+function getDomElement(instance: Instance<Element, Text>): Element {
   if ('ref' in instance) {
     return (instance as any).ref;
   }
@@ -10,20 +12,21 @@ function getDomElement(instance: Instance): Element {
 }
 
 class PlusnewAdapter extends EnzymeAdapter {
-  createRenderer(options: { mode: 'shallow' | 'mount', attachTo?: HTMLElement, plusnewRenderOptions: renderOptions }) {
+  createRenderer(options: { mode: 'shallow' | 'mount', attachTo?: HTMLElement, plusnewRenderOptions: renderOptions<Element, Text> }) {
     const container = options.attachTo || document.createElement('div');
-    let rootInstance: Instance;
+    let rootInstance: Instance<Element, Text>;
     return {
       render(element: plusnew.JSX.Element) {
-        rootInstance = plusnew.render(element, container, {
+        rootInstance = plusnew.render(element, {
           createChildrenComponents: options.mode === 'mount',
+          driver: driver(container),
           ...options.plusnewRenderOptions,
         });
       },
       getNode() {
         return rootInstance;
       },
-      simulateEvent(instance: Instance, type: string | Event) {
+      simulateEvent(instance: Instance<Element, Text>, type: string | Event) {
         if (typeof type === 'string') {
           const event = new Event(type, { bubbles: true, cancelable: true });
           getDomElement(instance).dispatchEvent(event);
@@ -45,11 +48,11 @@ class PlusnewAdapter extends EnzymeAdapter {
     return elementToTree(element);
   }
 
-  nodeToHostNode(instance: Instance): Element {
+  nodeToHostNode(instance: Instance<Element, Text>): Element {
     return getDomElement(instance);
   }
 
-  nodeToElement(instance: Instance) {
+  nodeToElement(instance: Instance<Element, Text>) {
     return plusnew.createElement(instance.type as any, instance.props);
   }
 }

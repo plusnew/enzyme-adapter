@@ -1,7 +1,7 @@
 import ComponentInstance from '@plusnew/core/dist/src/instances/types/Component/Instance';
 import { ComponentContainer, Instance } from '@plusnew/core';
 
-type selector = string | {} | ComponentContainer<any>;
+type selector = string | {} | ComponentContainer<any, Element, Text>;
 type predicate<T> = (instance: T) => boolean;
 
 abstract class PlusnewCommonWrapper {
@@ -100,7 +100,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.html.apply(this.wrapper, arguments);
   }
 
-  public instance(): Instance {
+  public instance(): Instance<Element, Text> {
     return this.wrapper.instance.apply(this.wrapper, arguments);
   }
 

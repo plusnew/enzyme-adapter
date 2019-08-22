@@ -91,11 +91,11 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const MainComponent = component(
           'Component',
-          () => <div className="foo"><span /></div>,
+          () => <div class="foo"><span /></div>,
         );
 
         const wrapper = mount(<MainComponent />);
-        expect(wrapper.find('span').closest('div').prop('className')).toBe('foo');
+        expect(wrapper.find('span').closest('div').prop('class')).toBe('foo');
       });
     });
   });
@@ -135,15 +135,15 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
         const wrapper = mount(<MainComponent />);
-        expect(wrapper.containsAllMatchingElements([<span className="bar" />, <span className="baz" />])).toBe(true);
-        expect(wrapper.containsAllMatchingElements([<span className="bar" />, <span className="foobar" />])).toBe(false);
+        expect(wrapper.containsAllMatchingElements([<span class="bar" />, <span class="baz" />])).toBe(true);
+        expect(wrapper.containsAllMatchingElements([<span class="bar" />, <span class="foobar" />])).toBe(false);
       });
     });
   });
@@ -154,15 +154,15 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
         const wrapper = mount(<MainComponent />);
-        expect(wrapper.containsAnyMatchingElements([<span className="bar" />, <span className="foobar" />])).toBe(true);
-        expect(wrapper.containsAnyMatchingElements([<span className="knsdfg" />, <span className="foobar" />])).toBe(false);
+        expect(wrapper.containsAnyMatchingElements([<span class="bar" />, <span class="foobar" />])).toBe(true);
+        expect(wrapper.containsAnyMatchingElements([<span class="knsdfg" />, <span class="foobar" />])).toBe(false);
       });
     });
   });
@@ -173,9 +173,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -193,9 +193,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -213,9 +213,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -231,9 +231,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="bar" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="bar" />
             </div>,
         );
 
@@ -251,9 +251,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="bar" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="bar" />
             </div>,
         );
 
@@ -270,9 +270,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -289,9 +289,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -308,9 +308,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -326,9 +326,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -344,9 +344,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -362,9 +362,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -380,9 +380,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -398,9 +398,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -416,9 +416,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -441,7 +441,7 @@ describe('testing both renderers with:', () => {
           () =>
             <div>
               <MyComponent className="foo" />
-              <span className="foo" />
+              <span class="foo" />
             </div>,
         );
 
@@ -459,9 +459,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -477,9 +477,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -495,9 +495,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -513,9 +513,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -531,9 +531,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -549,9 +549,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -567,9 +567,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -585,9 +585,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -603,9 +603,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -621,9 +621,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -639,9 +639,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -657,9 +657,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -675,9 +675,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -693,9 +693,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -711,9 +711,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -729,9 +729,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -747,9 +747,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -768,9 +768,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo" onclick={fooSpy}>
-              <span className="bar" onclick={barSpy} />
-              <span className="baz" />
+            <div class="foo" onclick={fooSpy}>
+              <span class="bar" onclick={barSpy} />
+              <span class="baz" />
             </div>,
         );
 
@@ -790,9 +790,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo" onclick={fooSpy}>
-              <span className="bar" onclick={barSpy} />
-              <span className="baz" />
+            <div class="foo" onclick={fooSpy}>
+              <span class="bar" onclick={barSpy} />
+              <span class="baz" />
             </div>,
         );
 
@@ -818,9 +818,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo" onclick={fooSpy}>
-              <span className="bar" onclick={barSpy} />
-              <span className="baz" />
+            <div class="foo" onclick={fooSpy}>
+              <span class="bar" onclick={barSpy} />
+              <span class="baz" />
             </div>,
         );
 
@@ -844,9 +844,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -862,9 +862,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -880,9 +880,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -898,9 +898,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -916,9 +916,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -934,9 +934,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -952,9 +952,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
@@ -970,9 +970,9 @@ describe('testing both renderers with:', () => {
         const local = store(0, (state, action: number) => action);
 
         const render = jasmine.createSpy('render', () =>
-          <div className="foo">
-            <span className="bar" />
-            <span className="baz" />
+          <div class="foo">
+            <span class="bar" />
+            <span class="baz" />
           </div>,
         );
         const MainComponent = component(
@@ -1001,9 +1001,9 @@ describe('testing both renderers with:', () => {
         const MainComponent = component(
           'Component',
           () =>
-            <div className="foo">
-              <span className="bar" />
-              <span className="baz" />
+            <div class="foo">
+              <span class="bar" />
+              <span class="baz" />
             </div>,
         );
 
