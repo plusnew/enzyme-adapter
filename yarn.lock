@@ -114,10 +114,10 @@
   resolved "https://registry.yarnpkg.com/@plusnew/core/-/core-1.0.0-alpha.2.tgz#6dda50757ae6b775cbcadd245e7d82f9576dd162"
   integrity sha512-LrDlKSZg65IZkmsm99I9ixftmpBw90P3zFTQQ5HnJdTV6IEswCv93RtnOYuI1dn+6+ndmJpJDLH75mWxKM6VVA==
 
-"@plusnew/driver-dom@^1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@plusnew/driver-dom/-/driver-dom-1.0.0-alpha.4.tgz#3976a9056b3494dc6943f9ed0f383968c3106c66"
-  integrity sha512-JoSUlf1tewVqvfpVkd2bBx258fnaKgRzz0ZgdQNL8/5BKXDi0X+RnrlhqwddY2EM3JfcUvt0h1qOrtI8J8U39A==
+"@plusnew/driver-dom@^1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@plusnew/driver-dom/-/driver-dom-1.0.0-alpha.5.tgz#36c523d2fdb373e1925fd11df2689376f83511c1"
+  integrity sha512-MmDmeHpwUaegrOAKWF0P0gEdf/ZuA7Pp+B6cRXGvufNq45ESeRIy2+A8AOsQCCRxtd0WiD2GFEd19WfCloAHdA==
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -3726,10 +3726,10 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
-plusnew-karma-config@0.6.50:
-  version "0.6.50"
-  resolved "https://registry.yarnpkg.com/plusnew-karma-config/-/plusnew-karma-config-0.6.50.tgz#ecc621a3c34ba621a19d0cc7b55f384428cb4459"
-  integrity sha512-aJRwsj2TZ2QyWha1cKbqRueHcAhXjqy4AfqNFEOoEnesetGW9SDn1aoufYAGA8yjNOZv89PzVKLhXY9C9fJxJQ==
+plusnew-karma-config@0.6.54:
+  version "0.6.54"
+  resolved "https://registry.yarnpkg.com/plusnew-karma-config/-/plusnew-karma-config-0.6.54.tgz#372c33e1b619d03cc91205912d962a04f29a23f1"
+  integrity sha512-5j+NdADI96fBoxaX1A3PJJctX6AiU5Ax44pg8bg/caYkQmRV4dX67UohRzN0zICVIWdHPe1DFoDaYrgZr126hQ==
   dependencies:
     "@types/jasmine" "^3.3.14"
     jasmine-core "^3.4.0"
@@ -4671,10 +4671,10 @@ tslint-microsoft-contrib@~5.2.1:
   dependencies:
     tsutils "^2.27.2 <2.29.0"
 
-tslint@5.18.0:
-  version "5.18.0"
-  resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.18.0.tgz#f61a6ddcf372344ac5e41708095bbf043a147ac6"
-  integrity sha512-Q3kXkuDEijQ37nXZZLKErssQVnwCV/+23gFEMROi8IlbaBG6tXqLPQJ5Wjcyt/yHPKBC+hD5SzuGaMora+ZS6w==
+tslint@5.19.0:
+  version "5.19.0"
+  resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.19.0.tgz#a2cbd4a7699386da823f6b499b8394d6c47bb968"
+  integrity sha512-1LwwtBxfRJZnUvoS9c0uj8XQtAnyhWr9KlNvDIdB+oXyT+VpsOAaEhEgKi1HrZ8rq0ki/AAnbGSv4KM6/AfVZw==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     builtin-modules "^1.1.1"
