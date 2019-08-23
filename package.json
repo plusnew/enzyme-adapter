@@ -22,7 +22,7 @@
   "homepage": "https://github.com/plusnew/enzyme-adapter-plusnew#readme",
   "devDependencies": {
     "@plusnew/core": "1.0.0-alpha.2",
-    "@plusnew/driver-dom": "^1.0.0-alpha.5",
+    "@plusnew/driver-dom": "^1.0.0-alpha.6",
     "enzyme": "3.10.0",
     "plusnew-karma-config": "0.6.54",
     "plusnew-webpack-config": "0.6.50",
