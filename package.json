@@ -1,6 +1,6 @@
 {
   "name": "@plusnew/enzyme-adapter",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "adapter for enzyme testsuite to the plusnew framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
