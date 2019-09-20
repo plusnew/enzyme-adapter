@@ -27,7 +27,7 @@
     "plusnew-karma-config": "0.6.61",
     "plusnew-webpack-config": "0.6.62",
     "tslint": "5.20.0",
-    "tslint-config-airbnb": "5.11.1",
+    "tslint-config-airbnb": "5.11.2",
     "typescript": "3.6.2"
   }
 }
