@@ -26,7 +26,7 @@
     "enzyme": "3.10.0",
     "plusnew-karma-config": "0.6.63",
     "plusnew-webpack-config": "0.6.64",
-    "tslint": "5.20.0",
+    "tslint": "5.20.1",
     "tslint-config-airbnb": "5.11.2",
     "typescript": "3.6.4"
   }
