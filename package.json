@@ -25,7 +25,7 @@
     "@plusnew/driver-dom": "^1.0.0-alpha.6",
     "enzyme": "3.10.0",
     "plusnew-karma-config": "0.6.63",
-    "plusnew-webpack-config": "0.6.64",
+    "plusnew-webpack-config": "0.6.655555",
     "tslint": "5.20.0",
     "tslint-config-airbnb": "5.11.2",
     "typescript": "3.6.4"
