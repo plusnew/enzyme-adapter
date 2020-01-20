@@ -109,10 +109,10 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@plusnew/core@1.0.0-alpha.2":
-  version "1.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@plusnew/core/-/core-1.0.0-alpha.2.tgz#6dda50757ae6b775cbcadd245e7d82f9576dd162"
-  integrity sha512-LrDlKSZg65IZkmsm99I9ixftmpBw90P3zFTQQ5HnJdTV6IEswCv93RtnOYuI1dn+6+ndmJpJDLH75mWxKM6VVA==
+"@plusnew/core@1.0.0-alpha.4":
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@plusnew/core/-/core-1.0.0-alpha.4.tgz#28ef4c32cf223d3f5c8a5d87e6bb2252f9589252"
+  integrity sha512-bHdrauyWvLpdsVuSlFTIFiuGwljMplFGlY5wDcywbBrQtxXbo46Wn2lr/EQdx++voyLFYG7Qu1xgaOzWJLQxhA==
 
 "@plusnew/driver-dom@^1.0.0-alpha.6":
   version "1.0.0-alpha.6"
