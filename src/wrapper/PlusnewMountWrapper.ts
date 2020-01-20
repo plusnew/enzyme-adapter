@@ -3,6 +3,8 @@ import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
   wrapper: any;
   WrapperClass = PlusnewMountWrapper;
+  length: number;
+
   constructor(wrapper: PlusnewMountWrapper) {
     super();
     this.wrapper = wrapper;
@@ -17,7 +19,7 @@ export default class PlusnewMountWrapper extends PlusnewNurturedWrapper {
     return this.wrapper.mount.apply(this.wrapper, arguments);
   }
 
-  public ref(refName: string): this {
+  public ref(_refName: string): this {
     return this.wrapper.ref.apply(this.wrapper, arguments);
   }
 

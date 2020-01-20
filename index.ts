@@ -1,5 +1,5 @@
 import enzymeAdapterPlusnew from './src';
-import '@plusnew/driver-dom/dist/jsx';
+import '@plusnew/driver-dom';
 
 export default enzymeAdapterPlusnew;
 export * from './src';

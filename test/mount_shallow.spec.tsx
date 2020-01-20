@@ -1,7 +1,7 @@
+import plusnew, { component, Props, store } from '@plusnew/core';
+import { configure } from 'enzyme';
 import enzymeAdapterPlusnew, { mount, shallow } from 'index';
 import PlusnewCommonWrapper from 'wrapper/PlusnewCommonWrapper';
-import { configure } from 'enzyme';
-import plusnew, { component, store, Props } from '@plusnew/core';
 
 interface Common {
   (element: plusnew.JSX.Element): PlusnewCommonWrapper;
@@ -20,7 +20,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{ foo: string }>) => <button />,
+          (_Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -44,7 +44,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{ foo: string }>) => <button />,
+          (_Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -68,7 +68,7 @@ describe('testing both renderers with:', () => {
       getMountFunction((mount) => {
         const NestedComponent = component(
           'Component',
-          (Props: Props<{ foo: string }>) => <button />,
+          (_Props: Props<{ foo: string }>) => <button />,
         );
 
         const MainComponent = component(
@@ -967,7 +967,7 @@ describe('testing both renderers with:', () => {
   describe('unmount()', () => {
     it('basic test', () => {
       getMountFunction((mount) => {
-        const local = store(0, (state, action: number) => action);
+        const local = store(0, (_state, action: number) => action);
 
         const render = jasmine.createSpy('render', () =>
           <div class="foo">

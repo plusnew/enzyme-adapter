@@ -3,6 +3,8 @@ import PlusnewNurturedWrapper from './PlusnewNurturedWrapper';
 class PlusnewShallowWrapper extends PlusnewNurturedWrapper {
   wrapper: any;
   WrapperClass = PlusnewShallowWrapper;
+  length: number;
+
   constructor(wrapper: PlusnewShallowWrapper) {
     super();
     this.wrapper = wrapper;
@@ -13,11 +15,11 @@ class PlusnewShallowWrapper extends PlusnewNurturedWrapper {
     return this.wrapper.dive.apply(this.wrapper, arguments);
   }
 
-  public equals(node: plusnew.JSX.Element): true {
+  public equals(_node: plusnew.JSX.Element): true {
     return this.wrapper.equals.apply(this.wrapper, arguments);
   }
 
-  public shallow(options?: {}): this {
+  public shallow(_options?: {}): this {
     return this.wrapper.shallow.apply(this.wrapper, arguments);
   }
 }

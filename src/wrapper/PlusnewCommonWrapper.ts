@@ -1,4 +1,3 @@
-import ComponentInstance from '@plusnew/core/dist/src/instances/types/Component/Instance';
 import { ComponentContainer, Instance } from '@plusnew/core';
 
 type selector = string | {} | ComponentContainer<any, Element, Text>;
@@ -7,12 +6,13 @@ type predicate<T> = (instance: T) => boolean;
 abstract class PlusnewCommonWrapper {
   abstract wrapper: any;
   abstract WrapperClass: any;
+  abstract length: number;
 
-  public at(index: number): this {
+  public at(_index: number): this {
     return new this.WrapperClass(this.wrapper.at.apply(this.wrapper, arguments));
   }
 
-  public childAt(index: number): this {
+  public childAt(_index: number): this {
     return new this.WrapperClass(this.wrapper.childAt.apply(this.wrapper, arguments));
   }
 
@@ -20,27 +20,27 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.children.apply(this.wrapper, arguments));
   }
 
-  public closest(selector: selector): this {
+  public closest(_selector: selector): this {
     return new this.WrapperClass(this.wrapper.closest.apply(this.wrapper, arguments));
   }
 
-  public contains(nodeOrNodes: plusnew.JSX.Element | plusnew.JSX.Element[]): boolean {
+  public contains(_nodeOrNodes: plusnew.JSX.Element | plusnew.JSX.Element[]): boolean {
     return this.wrapper.contains.apply(this.wrapper, arguments);
   }
 
-  public containsAllMatchingElements(nodes: plusnew.JSX.Element[]): boolean {
+  public containsAllMatchingElements(_nodes: plusnew.JSX.Element[]): boolean {
     return this.wrapper.containsAllMatchingElements.apply(this.wrapper, arguments);
   }
 
-  public containsAnyMatchingElements(nodes: plusnew.JSX.Element[]): boolean {
+  public containsAnyMatchingElements(_nodes: plusnew.JSX.Element[]): boolean {
     return this.wrapper.containsAnyMatchingElements.apply(this.wrapper, arguments);
   }
 
-  public containsMatchingElement(node: plusnew.JSX.Element): boolean {
+  public containsMatchingElement(_node: plusnew.JSX.Element): boolean {
     return this.wrapper.containsMatchingElement.apply(this.wrapper, arguments);
   }
 
-  public context(key: any): any {
+  public context(_key: any): any {
     return this.wrapper.context.apply(this.wrapper, arguments);
   }
 
@@ -48,11 +48,11 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.debug.apply(this.wrapper, arguments);
   }
 
-  public every(selector: selector): boolean {
+  public every(_selector: selector): boolean {
     return this.wrapper.every.apply(this.wrapper, arguments);
   }
 
-  public everyWhere(predicate: predicate<this>): boolean {
+  public everyWhere(_predicate: predicate<this>): boolean {
     return this.wrapper.everyWhere.apply(this.wrapper, arguments);
   }
 
@@ -60,19 +60,19 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.exists.apply(this.wrapper, arguments);
   }
 
-  public filter(selector: selector): this {
+  public filter(_selector: selector): this {
     return new this.WrapperClass(this.wrapper.filter.apply(this.wrapper, arguments));
   }
 
-  public filterWhere(predicate: predicate<this>): this {
+  public filterWhere(_predicate: predicate<this>): this {
     return new this.WrapperClass(this.wrapper.filterWhere.apply(this.wrapper, arguments));
   }
 
-  public find(selector: selector): this {
+  public find(_selector: selector): this {
     return new this.WrapperClass(this.wrapper.find.apply(this.wrapper, arguments));
   }
 
-  public findWhere(predicate: predicate<this>): this {
+  public findWhere(_predicate: predicate<this>): this {
     return new this.WrapperClass(this.wrapper.findWhere.apply(this.wrapper, arguments));
   }
 
@@ -80,15 +80,15 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.first.apply(this.wrapper, arguments));
   }
 
-  public forEach(fn: any): this {
+  public forEach(_fn: any): this {
     return new this.WrapperClass(this.wrapper.forEach.apply(this.wrapper, arguments));
   }
 
-  public get(index: number): plusnew.JSX.Element {
+  public get(_index: number): plusnew.JSX.Element {
     return this.wrapper.get.apply(this.wrapper, arguments);
   }
 
-  public hasClass(className: string): boolean {
+  public hasClass(_className: string): boolean {
     return this.wrapper.hasClass.apply(this.wrapper, arguments);
   }
 
@@ -104,7 +104,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.instance.apply(this.wrapper, arguments);
   }
 
-  public is(selector: selector): boolean {
+  public is(_selector: selector): boolean {
     return this.wrapper.is.apply(this.wrapper, arguments);
   }
 
@@ -120,11 +120,11 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.last.apply(this.wrapper, arguments));
   }
 
-  public map<T>(fn: (node: this) => T): T[] {
+  public map<T>(_fn: (node: this) => T): T[] {
     return this.wrapper.map.apply(this.wrapper, arguments);
   }
 
-  public matchesElement(node: plusnew.JSX.Element): boolean {
+  public matchesElement(_node: plusnew.JSX.Element): boolean {
     return this.wrapper.matchesElement.apply(this.wrapper, arguments);
   }
 
@@ -132,7 +132,7 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.name.apply(this.wrapper, arguments);
   }
 
-  public not(selector: selector): this {
+  public not(_selector: selector): this {
     return new this.WrapperClass(this.wrapper.not.apply(this.wrapper, arguments));
   }
 
@@ -144,7 +144,7 @@ abstract class PlusnewCommonWrapper {
     return new this.WrapperClass(this.wrapper.parents.apply(this.wrapper, arguments));
   }
 
-  public prop(key: string): any {
+  public prop(_key: string): any {
     return this.wrapper.prop.apply(this.wrapper, arguments);
   }
 
@@ -152,11 +152,11 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.props.apply(this.wrapper, arguments);
   }
 
-  public reduce<T>(fn: (node: this) => T, initialValue?: T): T {
+  public reduce<T>(_fn: (node: this) => T, _initialValue?: T): T {
     return this.wrapper.reduce.apply(this.wrapper, arguments);
   }
 
-  public reduceRight<T>(fn: (node: this) => T, initialValue?: T): T {
+  public reduceRight<T>(_fn: (node: this) => T, _initialValue?: T): T {
     return this.wrapper.reduceRight.apply(this.wrapper, arguments);
   }
 
@@ -164,41 +164,41 @@ abstract class PlusnewCommonWrapper {
     return this.wrapper.render.apply(this.wrapper, arguments);
   }
 
-  public setContext(context: any): any {
+  public setContext(_context: any): any {
     return this.wrapper.setContext.apply(this.wrapper, arguments);
   }
 
-  public setProps(nextProps: any) {
+  public setProps(_nextProps: any) {
     return this.wrapper.setProps.apply(this.wrapper, arguments);
   }
 
-  public setState(nextState: any, callback?: any) {
+  public setState(_nextState: any, _callback?: any) {
     return this.wrapper.setState.apply(this.wrapper, arguments);
   }
 
   public simulate(event: string, data?: any): this;
   public simulate(event: Event): this;
-  public simulate(event: string | Event, data?: any): this {
+  public simulate(_event: string | Event, _data?: any): this {
     return new this.WrapperClass(this.wrapper.simulate.apply(this.wrapper, arguments));
   }
 
-  public slice(begin?: number, end?: number): this {
+  public slice(_begin?: number, _end?: number): this {
     return new this.WrapperClass(this.wrapper.slice.apply(this.wrapper, arguments));
   }
 
-  public some(selector: selector): boolean {
+  public some(_selector: selector): boolean {
     return this.wrapper.some.apply(this.wrapper, arguments);
   }
 
-  public someWhere(predicate: predicate<this>): boolean {
+  public someWhere(_predicate: predicate<this>): boolean {
     return this.wrapper.someWhere.apply(this.wrapper, arguments);
   }
 
-  public state(key: any) {
+  public state(_key: any) {
     return this.wrapper.state.apply(this.wrapper, arguments);
   }
 
-  public tap(intercepter: any) {
+  public tap(_intercepter: any) {
     return this.wrapper.tap.apply(this.wrapper, arguments);
   }
 
@@ -217,8 +217,6 @@ abstract class PlusnewCommonWrapper {
   public update() {
     return this.wrapper.update.apply(this.wrapper, arguments);
   }
-
-  length: number;
 }
 
 export default PlusnewCommonWrapper;
