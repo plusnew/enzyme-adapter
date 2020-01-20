@@ -2,7 +2,7 @@
   "include": [
     "src/*",
     "test/*",
-    "node_modules"
+    "node_modules/@plusnew"
   ],
   "compilerOptions": {
     /* Basic Options */
