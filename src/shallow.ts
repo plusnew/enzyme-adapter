@@ -1,5 +1,5 @@
+import { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
 import { shallow } from 'enzyme';
-import { renderOptions } from '@plusnew/core';
 import PlusnewShallowWrapper from './wrapper/PlusnewShallowWrapper';
 
 const plusnewShallow = function (node: plusnew.JSX.Element, options?: {attachTo?: HTMLElement | null, plusnewRenderOptions?: renderOptions<Element, Text> }) {

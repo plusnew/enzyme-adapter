@@ -1,7 +1,10 @@
-import plusnew, { Instance, PlusnewAbstractElement, renderOptions } from '@plusnew/core';
+import plusnew from '@plusnew/core';
+import Instance from '@plusnew/core/src/instances/types/Instance';
+import { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
+import PlusnewAbstractElement from '@plusnew/core/src/PlusnewAbstractElement';
+import driver from '@plusnew/driver-dom';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
-import driver from '@plusnew/driver-dom';
 import './enzymeMonkeyPatch';
 
 function getDomElement(instance: Instance<Element, Text>): Element {

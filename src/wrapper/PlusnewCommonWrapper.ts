@@ -1,4 +1,5 @@
-import { ComponentContainer, Instance } from '@plusnew/core';
+import { ComponentContainer } from '@plusnew/core';
+import Instance from '@plusnew/core/src/instances/types/Instance';
 
 type selector = string | {} | ComponentContainer<any, Element, Text>;
 type predicate<T> = (instance: T) => boolean;

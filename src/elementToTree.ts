@@ -1,5 +1,6 @@
-import { elementTypeChecker, PlusnewAbstractElement } from '@plusnew/core';
 import { ApplicationElement } from '@plusnew/core/src/interfaces/component';
+import PlusnewAbstractElement from '@plusnew/core/src/PlusnewAbstractElement';
+import elementTypeChecker from '@plusnew/core/src/util/elementTypeChecker';
 
 export default function elementToTree(element: ApplicationElement): any {
   if (elementTypeChecker.isComponentElement(element)) {

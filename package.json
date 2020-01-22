@@ -1,6 +1,6 @@
 {
   "name": "@plusnew/enzyme-adapter",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "adapter for enzyme testsuite to the plusnew framework",
   "main": "src/index.ts",
   "module": "src/index.ts",
@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/plusnew/enzyme-adapter-plusnew#readme",
   "devDependencies": {
-    "@plusnew/core": "1.0.0-alpha.8",
-    "@plusnew/driver-dom": "^1.0.0-alpha.7",
+    "@plusnew/core": "^1.0.0-alpha.9",
+    "@plusnew/driver-dom": "^1.0.0-alpha.11",
     "@types/jest": "^24.9.0",
     "enzyme": "3.11.0",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "ts-jest": "^24.3.0",
-    "tslint": "5.20.1",
+    "tslint": "6.0.0",
     "tslint-config-airbnb": "5.11.2",
     "typescript": "3.7.5"
   }
