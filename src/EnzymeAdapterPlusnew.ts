@@ -15,7 +15,7 @@ function getDomElement(instance: Instance<Element, Text>): Element {
 }
 
 class PlusnewAdapter extends EnzymeAdapter {
-  createRenderer(options: { mode: 'shallow' | 'mount', attachTo?: HTMLElement, plusnewRenderOptions: renderOptions<Element, Text> }) {
+  createRenderer(options: { mode: 'shallow' | 'mount', attachTo?: HTMLElement, plusnewRenderOptions: Partial<renderOptions<Element, Text>> }) {
     const container = options.attachTo || document.createElement('div');
     let rootInstance: Instance<Element, Text>;
     return {
