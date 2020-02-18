@@ -1,3 +1,5 @@
+/// <reference path="./typings.d.ts"/>
+
 import * as rst from 'enzyme/build/RSTTraversal';
 import * as isRegex from 'is-regex';
 
