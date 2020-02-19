@@ -366,9 +366,9 @@
   integrity sha512-2AlITMvkWVAxu15UaLzqc98Dk/Z0XRARKtUTJ624K0SohDyXf30WiqhBiQAVA4qI0ldqFX5gHujRrGZssSjJrA==
 
 "@plusnew/driver-dom@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@plusnew/driver-dom/-/driver-dom-1.0.0-beta.1.tgz#39018ff7b0381b8e0391b7afac8226f28ed0146c"
-  integrity sha512-iSzkjtyPMb8tjicIniJdQ9u4s/AQ1hM0U/dy6JrxKtqflnDmkAlQdYaP+/tLCKBR+G1cK36W0GzYfZcMo7OI9w==
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@plusnew/driver-dom/-/driver-dom-1.0.0-beta.4.tgz#d70c3799595355b029066bec5a8376202b9a133e"
+  integrity sha512-sS8EFNLaXvEXv1iCt3VPv1oRriD/wpgeRmEdj+m3uHXOZDe3UTejM1MIRKW1vvh6ihwE3nniRRVhMBTW1xFH3Q==
 
 "@sinonjs/commons@^1.7.0":
   version "1.7.0"
