@@ -1,4 +1,4 @@
-import { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
+import type { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
 import { mount } from 'enzyme';
 import PlusnewMountWrapper from './wrapper/PlusnewMountWrapper';
 

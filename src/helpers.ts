@@ -1,4 +1,4 @@
-import { ComponentContainer } from '@plusnew/core';
+import type { ComponentContainer } from '@plusnew/core';
 
 export function getAwaitAllHandle() {
   let todoQueue: Promise<any>[] = [];

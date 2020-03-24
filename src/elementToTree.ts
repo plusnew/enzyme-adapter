@@ -1,4 +1,4 @@
-import { ApplicationElement } from '@plusnew/core/src/interfaces/component';
+import type { ApplicationElement } from '@plusnew/core/src/interfaces/component';
 import PlusnewAbstractElement from '@plusnew/core/src/PlusnewAbstractElement';
 import elementTypeChecker from '@plusnew/core/src/util/elementTypeChecker';
 

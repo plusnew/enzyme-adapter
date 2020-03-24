@@ -1,6 +1,6 @@
 import plusnew from '@plusnew/core';
-import Instance from '@plusnew/core/src/instances/types/Instance';
-import { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
+import type Instance from '@plusnew/core/src/instances/types/Instance';
+import type { renderOptions } from '@plusnew/core/src/interfaces/renderOptions';
 import PlusnewAbstractElement from '@plusnew/core/src/PlusnewAbstractElement';
 import driver from '@plusnew/driver-dom';
 import { EnzymeAdapter } from 'enzyme';
@@ -63,3 +63,4 @@ class PlusnewAdapter extends EnzymeAdapter {
 export default PlusnewAdapter;
 
 export { PlusnewAbstractElement };
+
