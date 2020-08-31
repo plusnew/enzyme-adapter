@@ -1,4 +1,4 @@
-import enzymeAdapterPlusnew, { mount } from 'index';
+import enzymeAdapterPlusnew, { mount } from '../index';
 import { configure } from 'enzyme';
 import plusnew, { component } from '@plusnew/core';
 

@@ -1,4 +1,4 @@
-import enzymeAdapterPlusnew, { shallow } from 'index';
+import enzymeAdapterPlusnew, { shallow } from '../index';
 import { configure } from 'enzyme';
 import plusnew, { component } from '@plusnew/core';
 
