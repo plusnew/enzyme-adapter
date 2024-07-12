@@ -24,4 +24,5 @@ module.exports = {
       lines: 100
     }
   }*/
+  testEnvironment: "jsdom" // default environment is "node", for a web app use a browser-like environment "jsdom" instead.
 }

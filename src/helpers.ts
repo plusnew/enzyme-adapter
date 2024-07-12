@@ -1,4 +1,5 @@
 import type { ComponentContainer } from '@plusnew/core';
+import type { props as IProps } from '@plusnew/core/src/interfaces/component';
 
 export function getAwaitAllHandle() {
   let todoQueue: Promise<any>[] = [];
@@ -22,7 +23,7 @@ export function getAwaitAllHandle() {
 }
 
 export function getComponentPartial<
-  props,
+  props extends Partial<IProps & { children: any; }>,
   HostElement,
   HostTextElement
 >(component: ComponentContainer<props, HostElement, HostTextElement>): ComponentContainer<Partial<props>, HostElement, HostTextElement> {
