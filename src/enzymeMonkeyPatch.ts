@@ -1,6 +1,7 @@
 /// <reference path="./typings.d.ts"/>
 
 import * as rst from 'enzyme/build/RSTTraversal';
+import isRegex from 'is-regex';
 
 /**
  * i needed to overwrite this function of enzyme
@@ -10,6 +11,6 @@ import * as rst from 'enzyme/build/RSTTraversal';
 rst.hasClassName = function hasClassName(node: any, className: string | RegExp) {
   let classes = rst.propsOfNode(node).class || '';
   classes = String(classes).replace(/\s/g, ' ');
-  if (className instanceof RegExp) return (className as RegExp).test(classes);
+  if (isRegex(className)) return className.test(classes);
   return ` ${classes} `.indexOf(` ${className} `) > -1;
 };
