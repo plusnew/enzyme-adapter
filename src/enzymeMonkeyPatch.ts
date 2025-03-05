@@ -11,6 +11,6 @@ import isRegex from 'is-regex';
 rst.hasClassName = function hasClassName(node: any, className: string | RegExp) {
   let classes = rst.propsOfNode(node).class || '';
   classes = String(classes).replace(/\s/g, ' ');
-  if (isRegex(className)) return className.test(classes);
+  if (isRegex(className)) return (className as RegExp).test(classes);
   return ` ${classes} `.indexOf(` ${className} `) > -1;
 };
