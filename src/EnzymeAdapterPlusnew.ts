@@ -5,7 +5,6 @@ import PlusnewAbstractElement from '@plusnew/core/src/PlusnewAbstractElement';
 import driver from '@plusnew/driver-dom';
 import { EnzymeAdapter } from 'enzyme';
 import elementToTree from './elementToTree';
-import './enzymeMonkeyPatch';
 
 function getDomElement(instance: Instance<Element, Text>): Element {
   if ('ref' in instance) {
